@@ -13,6 +13,8 @@ const AdminOutlet = lazy(() => import('../components/adminDash/AdminOutlet'));
 const AdminIndex = lazy(() => import('../components/adminDash/AdminIndex'));
 const TransferList = lazy(() => import('../components/adminDash/main/Transfer/List'));
 const Login = lazy(() => import('../pages/Login'));
+const ApiMain = lazy(() => import('../components/adminDash/apiPages/ApiMain'));
+const Info = lazy(() => import('../components/adminDash/info/Info'));
 
 const Index = (props) => {
   const [admin, setAdmin] = useState(false);
@@ -46,6 +48,12 @@ const Index = (props) => {
         <Route index element={<AdminIndex />} />
         <Route path="transfer">
           <Route index element={<TransferList />} />
+        </Route>
+        <Route path="info">
+          <Route index element={<Info />} />
+        </Route>
+        <Route path="apimain">
+          <Route index element={<ApiMain />} />
         </Route>
       </Route>
     }

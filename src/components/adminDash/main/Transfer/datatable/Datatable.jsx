@@ -6,13 +6,8 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { listTransfer } from '../../../../../action';
 import EditIcon from '@mui/icons-material/Edit';
-import { Box, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
+import { Box, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import * as React from 'react';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 const Datatable = (props) => {
   const [perPage, setPerPage] = useState('');
@@ -23,8 +18,7 @@ const Datatable = (props) => {
   const [status, setStatus] = useState('');
   const [filtred, setFiltred] = useState('');
   const [filtrFunc, setFiltrFunc] = useState(false);
-  const [date1, setDate1] = useState(new Date('mm/dd/yyyy'));
-  const [date2, setDate2] = useState(new Date('mm/dd/yyyy'));
+
 
   let list = props.list;
 
@@ -34,20 +28,11 @@ const Datatable = (props) => {
       .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
       .filter(i => status === '' ? i : i.status === status)
       .filter(i => pay === '' ? i : i.turi === pay);
-    // .filter(i => date1 || date2 ? new Date(date1) < new Date(i.create_time) < new Date(date2) : i);
-
-    const res = list.filter(i =>
-      new Date(i.create_time) > new Date(i.create_time),
-    );
-    console.log(new Date('07.05.2022 03:54:16'));
 
     setFiltred(result);
     setFiltrFunc(true);
 
   };
-
-  console.log(date1);
-  console.log(date2);
 
   const reset = () => {
     setFiltred('');
@@ -66,6 +51,11 @@ const Datatable = (props) => {
     setFiltred(props.list);
 
   }, []);
+
+  // console.log(card);
+  // console.log(cardId);
+  // console.log(status);
+  // console.log(pay);
 
 
   const actionColumn = [{
@@ -86,7 +76,6 @@ const Datatable = (props) => {
       </div>);
     },
   }];
-  console.log(list);
 
 
   return (<div className="datatable">
@@ -94,36 +83,7 @@ const Datatable = (props) => {
       <Box
         className="filter-inputs">
         <Typography component="h1" mb={3} variant="h5"> Выберите метод фильтрации </Typography>
-
         <Box className="form_input_flex">
-          <Box className="form_input_fields">
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <Stack spacing={3}>
-                <DateTimePicker
-                  renderInput={(props) => <TextField {...props} />}
-                  label="Выборка дат с"
-                  value={date1}
-                  onChange={(newValue) => {
-                    setDate1(newValue);
-                  }}
-                />
-              </Stack>
-            </LocalizationProvider>
-          </Box>
-          <Box className="form_input_fields">
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <Stack spacing={3}>
-                <DateTimePicker
-                  renderInput={(props) => <TextField {...props} />}
-                  label="Выборка дат до"
-                  value={date2}
-                  onChange={(newValue) => {
-                    setDate2(newValue);
-                  }}
-                />
-              </Stack>
-            </LocalizationProvider>
-          </Box>
           <Box className="form_input_fields">
             <TextField
               type="number"
@@ -153,7 +113,6 @@ const Datatable = (props) => {
                 Выберите аккаунт
               </InputLabel>
               <Select
-                disabled={true}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={accaunt}
@@ -203,7 +162,9 @@ const Datatable = (props) => {
 
         </Box>
         <Box sx={{
-          width: '100%', display: 'flex', flexWrap: 'wrap',
+          width: '100%',
+          display: 'flex',
+          flexWrap: 'wrap',
 
         }}>
           <button style={{ marginRight: '20px' }} type="button" className="btn btn-primary primary_btn"

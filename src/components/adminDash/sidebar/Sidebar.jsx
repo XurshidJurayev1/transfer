@@ -50,7 +50,7 @@ const Sidebar = () => {
     <div className="sidebar" style={sidebar ? active : unactive}>
       <div className="top">
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <span className="logo">AsiaPay</span>
+          <span className="logo">Dashboard</span>
         </Link>
         <div className="close-btn">
           <CloseIcon className="icon" onClick={() => dispatch({ type: 'CLOSE_SIDE' })} />
@@ -59,16 +59,23 @@ const Sidebar = () => {
       <hr style={{ margin: '0' }} />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
-
+          <p className="title">Info Dashboard</p>
+          <Link to="/admin/info">
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>info</span>
+            </li>
+          </Link>
+          <Link to="/admin/apimain">
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>api</span>
+            </li>
+          </Link>
           <Link to="/admin/transfer">
             <li>
               <CreditCardIcon className="icon" />
-              <span>Transfers</span>
+              <span>repor</span>
             </li>
           </Link>
 
