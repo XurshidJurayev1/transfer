@@ -9,7 +9,7 @@ const AdminIndex = lazy(() => import('../components/adminDash/AdminIndex'));
 const TransferList = lazy(() => import('../components/adminDash/main/Transfer/List'));
 const Login = lazy(() => import('../pages/Login'));
 const ApiMain = lazy(() => import('../components/adminDash/apiPages/ApiMain'));
-const Info = lazy(() => import('../components/adminDash/info/Info'));
+const Info = lazy(() => import('../components/adminDash/information/Info'));
 
 const Index = (props) => {
   const [admin, setAdmin] = useState(false);
