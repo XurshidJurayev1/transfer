@@ -28,6 +28,7 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
           <AdminRoutes />
+
         </Suspense>
         {/*<Loader />*/}
       </BrowserRouter>

@@ -21,10 +21,11 @@
     .search {
       border-color: gray;
     }
-    .nav-menu{
+
+    .nav-menu {
       @media (max-width: 990px) {
         border-color: #333;
-        background-color:#111;
+        background-color: #111;
       }
     }
   }
@@ -38,6 +39,7 @@
         color: #999;
       }
     }
+
     hr {
       border-color: #333;
     }
@@ -69,7 +71,12 @@
     }
   }
 
-  input{
-      background-color: transparent;
+  input {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  select {
+    color: #fff;
   }
 }

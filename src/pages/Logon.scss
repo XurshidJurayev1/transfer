@@ -1,0 +1,49 @@
+.login{
+    background: #4e73df;
+    height:100vh;
+    &__title{ 
+        font-size: 35px;
+        font-family: 'Oswald', sans-serif;
+        text-align:  center;
+        letter-spacing: 1px;
+        @media (max-width: 400px) {
+            font-size: 25px;
+        }
+    }
+    &__formMain{
+        background: white;
+        border-radius: 10px;
+    }
+    &__input{
+        padding: 16px 10px;
+        margin: 15px 0;
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 2px;
+        @media (max-width: 400px) {
+            font-size: 15px;
+        }
+    }
+    &__btn{
+        display: block;
+        padding: 8px 25px;
+        border-radius: 6px;
+        border: 1px solid #4e73df;
+        background: white;
+        color: #4e73df;
+        transition: 500ms;
+        margin: auto;
+    }
+    &__btn:hover{
+        background: #4e73df;
+        color: white;
+    }
+    &__group{
+        display: flex;
+        align-items: center;
+        .fa-solid{
+            font-size: 25px;
+            margin-right: 10px;
+            color: #4e73df;
+        }
+    }
+}

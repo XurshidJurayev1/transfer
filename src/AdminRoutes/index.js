@@ -1,5 +1,6 @@
 import React, { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import MaterialUIPickers from '../components/adminDash/main/Transfer/datatable/date';
 
 
 // import AdminOutlet from '../components/adminDash/AdminOutlet';
@@ -21,6 +22,7 @@ const Index = () => {
           <Route index element={<TransferList />} />
         </Route>
       </Route>
+      <Route path="/asdas" element={<MaterialUIPickers />} />
 
 
     </Routes>
