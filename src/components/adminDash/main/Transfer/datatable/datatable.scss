@@ -6,7 +6,7 @@
     width: 100%;
     font-size: 24px;
     color: gray;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,6 +20,39 @@
       padding: 5px;
       border-radius: 5px;
       cursor: pointer;
+    }
+
+    .filter-inputs {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+
+      .primary_btn {
+        width: 150px;
+        height: 40px;
+      }
+
+      .form_input_flex {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        justify-content: space-around;
+
+        @media screen and (max-width: 560px) {
+          width: 100%;
+        }
+
+        .form_input_fields {
+          min-width: 250px;
+          margin-bottom: 20px;
+
+          input {
+            width: 100%;
+          }
+        }
+
+      }
     }
   }
 

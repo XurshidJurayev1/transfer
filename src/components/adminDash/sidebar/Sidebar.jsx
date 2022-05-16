@@ -56,7 +56,7 @@ const Sidebar = () => {
           <CloseIcon className="icon" onClick={() => dispatch({ type: 'CLOSE_SIDE' })} />
         </div>
       </div>
-      <hr />
+      <hr style={{ margin: '0' }} />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>

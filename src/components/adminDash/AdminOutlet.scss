@@ -3,15 +3,15 @@
   overflow: hidden;
   min-height: 100vh;
 
-  .activeDesk{
+  .activeDesk {
     padding-left: 200px;
   }
 
-  
 
   .homeContainer {
     transition: all .3s ease-in-out;
-    
+    min-height: 100vh;
+
     @media (max-width: 990px) {
       padding-left: 0px
     }
