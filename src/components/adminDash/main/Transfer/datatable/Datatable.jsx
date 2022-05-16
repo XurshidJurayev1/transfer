@@ -37,14 +37,17 @@ const Datatable = (props) => {
     // .filter(i => date1 || date2 ? new Date(date1) < new Date(i.create_time) < new Date(date2) : i);
 
     const res = list.filter(i =>
-      date2 && new Date(date1) <= new Date(i.create_time) <= new Date(date2),
+      new Date(i.create_time) > new Date(i.create_time),
     );
-    console.log(res);
+    console.log(new Date('07.05.2022 03:54:16'));
 
     setFiltred(result);
     setFiltrFunc(true);
 
   };
+
+  console.log(date1);
+  console.log(date2);
 
   const reset = () => {
     setFiltred('');
