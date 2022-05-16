@@ -1,6 +1,7 @@
 .datatable {
-  height: 600px;
+  height: 660px;
   padding: 20px;
+  //height: 100%;
 
   .datatableTitle {
     width: 100%;
@@ -10,6 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 
     .link {
       text-decoration: none;
