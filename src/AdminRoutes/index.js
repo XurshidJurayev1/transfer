@@ -4,11 +4,6 @@ import MaterialUIPickers from '../components/adminDash/main/Transfer/datatable/d
 import { connect } from 'react-redux';
 
 
-// import AdminOutlet from '../components/adminDash/AdminOutlet';
-// import AdminIndex from '../components/adminDash/AdminIndex';
-// import TransferList from '../components/adminDash/main/Transfer/List';
-
-
 const AdminOutlet = lazy(() => import('../components/adminDash/AdminOutlet'));
 const AdminIndex = lazy(() => import('../components/adminDash/AdminIndex'));
 const TransferList = lazy(() => import('../components/adminDash/main/Transfer/List'));
