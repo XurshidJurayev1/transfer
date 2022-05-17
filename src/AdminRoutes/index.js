@@ -1,5 +1,5 @@
 import React, { lazy, useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import MaterialUIPickers from '../components/adminDash/main/Transfer/datatable/date';
 import { connect } from 'react-redux';
 
@@ -52,15 +52,12 @@ const Index = (props) => {
         </Route>
       </Route>
     }
-    <Route path="/asdas" element={<MaterialUIPickers />} />
 
     <Route path="/" exact>
-      <Route index element={<h1>Home Page</h1>} />
-      <Route path="/*" element={<Login />} />
+      <Route index element={<Login />} />
+      <Route path="*" element={<h1>Page Not Found Status Code-404 <Link to="/">home</Link></h1>} />
 
     </Route>
-
-    <Route path="*" element={<h1>Page Not Found Status Code-404</h1>} />
 
 
   </Routes>);

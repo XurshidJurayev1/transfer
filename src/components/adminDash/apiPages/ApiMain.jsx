@@ -1,9 +1,10 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import "./api.scss";
+import './api.scss';
+
 const ApiMain = () => {
-    const codeString = `<?php
+  const codeString = `<?php
 
     $curl = curl_init();
     
@@ -38,7 +39,7 @@ const ApiMain = () => {
     echo $response;
     
     `;
-    const codeString_2 = `{
+  const codeString_2 = `{
         "error": false,
         "opid": 32, // ID в UZCARDAPI.RU
         "status": "success", // Успешно
@@ -52,9 +53,9 @@ const ApiMain = () => {
         "error": true,   
         "message": "Ошибка"
     }
-`
+`;
 
-    const errorString = `Код ошибки	Описание ошибки
+  const errorString = `Код ошибки	Описание ошибки
 9992	Вызываемый метод не активирован для магазина.
 9993	Не найден/не указан success/error/post-link URL.
 9994	Запрошенное действие отключено в настройках магазина
@@ -71,42 +72,41 @@ const ApiMain = () => {
 10006	Превышен лимит частоты оплат
 10007	Отказано по причине нарушения безопасности карточных данных.
 
-`
-    return (
+`;
+  return (
 
-        <div>
-            <div className="col-md-12">
-                <h1 className="aler alert-warning text-success text-center">Api</h1>
+    <div>
+      <div className="col-md-12">
+        <h1 className="aler alert-warning text-success text-center">Api</h1>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-10">
+            <h3>Платежный фрейм</h3>
+            <h5>Фрейм</h5>
+            <div className="dark__black">
+              <h4>Инитлизация платежа</h4>
+              <h5>Запрос</h5>
             </div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-10">
-                        <h3>Платежный фрейм</h3>
-                        <h5>Фрейм</h5>
-                        <div className="dark__black">
-                            <h4>Инитлизация платежа</h4>    
-                            <h5>Запрос</h5>    
-                        </div>
-                        <div className="apiMain_black">
-                            <p>
-                                <SyntaxHighlighter language="javascript" style={dark} >
-                                    {codeString}
-                                </SyntaxHighlighter>
-                            </p>
-                        </div>
-                        <h4>Если успешно JSON - объект ответа в формате</h4>
-                        <SyntaxHighlighter language="javascript" style={dark} >
-                            {codeString_2}
-                        </SyntaxHighlighter>
-                        <h4>Коды ошибок</h4>
-                        <SyntaxHighlighter language="javascript" style={dark} >
-                            {errorString}
-                        </SyntaxHighlighter>
-                    </div>
-                </div>
+            <div className="apiMain_black">
+              <SyntaxHighlighter language="javascript" style={dark}>
+                {codeString}
+              </SyntaxHighlighter>
+
             </div>
+            <h4>Если успешно JSON - объект ответа в формате</h4>
+            <SyntaxHighlighter language="javascript" style={dark}>
+              {codeString_2}
+            </SyntaxHighlighter>
+            <h4>Коды ошибок</h4>
+            <SyntaxHighlighter language="javascript" style={dark}>
+              {errorString}
+            </SyntaxHighlighter>
+          </div>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default ApiMain;

@@ -3,6 +3,8 @@ import './Logon.scss';
 import { connect } from 'react-redux';
 import { login } from '../action';
 import { useNavigate } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
+
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ const Login = (props) => {
     if (props.role.length > 0) {
       switch (props.role) {
         case 'admin' :
-          return navigate('/admin');
+          return navigate('/admin/info');
         default :
           return null;
       }
@@ -28,6 +30,8 @@ const Login = (props) => {
     e.preventDefault();
     props.login({ email, password });
   };
+
+  console.log(props.loginStatus);
 
 
   return (<div className="login">
@@ -74,6 +78,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     token: state.token, role: state.role, // user: state.user,
+    loginStatus: state.login,
   };
 };
 

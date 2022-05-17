@@ -10,7 +10,7 @@ export const listTransfer = () => async (dispatch) => {
 export const login = ({ email, password }) => async (dispatch) => {
   const res = await api.post('/login', { email, password });
   dispatch({
-    type: 'LOGIN', payload: res.data,
+    type: 'LOGIN', payload: res,
   });
 
 };

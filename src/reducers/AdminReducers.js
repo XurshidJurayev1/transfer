@@ -10,7 +10,7 @@ export const listTransfer = (state = [], action) => {
 export const token = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return action.payload.token;
+      return action.payload.data.token;
     case 'LOGOUT':
       return action.payload;
     default :
@@ -21,7 +21,7 @@ export const token = (state = {}, action) => {
 export const user = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return action.payload.user;
+      return action.payload.data.user;
     case 'LOGOUT':
       return action.payload;
     default :
@@ -32,9 +32,18 @@ export const user = (state = {}, action) => {
 export const role = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return action.payload.user.user.role;
+      return action.payload.data.user.user.role;
 
     case 'LOGOUT':
+      return action.payload;
+    default :
+      return state;
+  }
+};
+
+export const login = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN' :
       return action.payload;
     default :
       return state;

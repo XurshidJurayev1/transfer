@@ -6,8 +6,13 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { listTransfer } from '../../../../../action';
 import EditIcon from '@mui/icons-material/Edit';
-import { Box, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Box, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
 
 const Datatable = (props) => {
   const [perPage, setPerPage] = useState('');
@@ -18,7 +23,10 @@ const Datatable = (props) => {
   const [status, setStatus] = useState('');
   const [filtred, setFiltred] = useState('');
   const [filtrFunc, setFiltrFunc] = useState(false);
-
+  const [date1, setDate1] = useState(new Date('mm/dd/yyyy'));
+  const [date2, setDate2] = useState(new Date('mm/dd/yyyy'));
+  const [summaStatus, setSummaStatus] = useState(false);
+  const [summa, setSumma] = useState(0);
 
   let list = props.list;
 
@@ -28,6 +36,11 @@ const Datatable = (props) => {
       .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
       .filter(i => status === '' ? i : i.status === status)
       .filter(i => pay === '' ? i : i.turi === pay);
+// .filter(i => date1 || date2 ? new Date(date1) < new Date(i.create_time) < new Date(date2) : i);
+
+    const res = list.filter(i => new Date(i.create_time) > new Date(i.create_time));
+    console.log(new Date('07.05.2022 03:54:16'));
+
 
     setFiltred(result);
     setFiltrFunc(true);
@@ -52,11 +65,6 @@ const Datatable = (props) => {
 
   }, []);
 
-  // console.log(card);
-  // console.log(cardId);
-  // console.log(status);
-  // console.log(pay);
-
 
   const actionColumn = [{
     field: 'code_error', headerName: 'Код ошибки', width: 200, renderCell: (params) => {
@@ -78,12 +86,101 @@ const Datatable = (props) => {
   }];
 
 
+  const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+
+  const fileExtension = '.xlsx';
+
+  const exportToCSV = (csvData, fileName) => {
+
+    const ws = XLSX.utils.json_to_sheet(csvData);
+
+    const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
+
+    const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+
+    const data = new Blob([excelBuffer], { type: fileType });
+
+    FileSaver.saveAs(data, fileName + fileExtension);
+
+  };
+
+  const fileData = filtrFunc ? filtred : list;
+
+
+  const fileName = 'MySheets';
+
+  console.log(summaStatus);
+  console.log(summa);
+
+  const allSumma = () => {
+    setSummaStatus(true);
+    console.log(summa);
+    if (filtrFunc) {
+      const totalCount = filtred.reduce((total, item) => {
+        return total + Number(item.amount);
+      }, 0);
+      setSumma(totalCount);
+
+    } else {
+      const totalCount = list.reduce((total, item) => {
+        return total + Number(item.amount);
+      }, 0);
+      setSumma(totalCount);
+    }
+  };
+
+  Number.prototype.toDivide = function () {
+    var int = String(this);
+    if (int.length <= 3) return int;
+    var space = 0;
+    var number = '';
+
+    for (var i = int.length - 1; i >= 0; i--) {
+      if (space == 3) {
+        number = ' ' + number;
+        space = 0;
+      }
+      number = int.charAt(i) + number;
+      space++;
+    }
+
+    return number;
+  };
+
   return (<div className="datatable">
     <div className="datatableTitle">
       <Box
         className="filter-inputs">
         <Typography component="h1" mb={3} variant="h5"> Выберите метод фильтрации </Typography>
         <Box className="form_input_flex">
+          <Box className="form_input_fields">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Stack spacing={3}>
+                <DateTimePicker
+                  renderInput={(props) => <TextField {...props} />}
+                  label="Выборка дат с"
+                  value={date1}
+                  onChange={(newValue) => {
+                    setDate1(newValue);
+                  }}
+                />
+              </Stack>
+            </LocalizationProvider>
+          </Box>
+          <Box className="form_input_fields">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Stack spacing={3}>
+                <DateTimePicker
+                  renderInput={(props) => <TextField {...props} />}
+                  label="Выборка дат до"
+                  value={date2}
+                  onChange={(newValue) => {
+                    setDate2(newValue);
+                  }}
+                />
+              </Stack>
+            </LocalizationProvider>
+          </Box>
           <Box className="form_input_fields">
             <TextField
               type="number"
@@ -162,15 +259,25 @@ const Datatable = (props) => {
 
         </Box>
         <Box sx={{
-          width: '100%',
-          display: 'flex',
-          flexWrap: 'wrap',
+          width: '100%', display: 'flex', flexWrap: 'wrap',
 
         }}>
           <button style={{ marginRight: '20px' }} type="button" className="btn btn-primary primary_btn"
                   onClick={() => filtr()}> Filtr
           </button>
-          <button type="button" className="btn btn-primary primary_btn" onClick={() => reset()}> reset</button>
+          <button type="button" style={{ marginRight: '20px' }} className="btn btn-primary primary_btn"
+                  onClick={() => reset()}> reset
+          </button>
+          <button type="button" className="btn btn-success primary_btn" style={{ marginRight: '20px' }}
+                  onClick={() => exportToCSV(fileData, fileName)}>
+            Export
+          </button>
+          <button type="button" className="btn btn-info primary_btn" style={{ marginRight: '20px' }} onClick={allSumma}>
+            Сумма
+          </button>
+          {summaStatus && <p> Общая сумма: {
+            summa.toDivide()
+          } </p>}
         </Box>
 
       </Box>
