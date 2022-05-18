@@ -24,9 +24,6 @@ const AdminOutlet = () => {
   }, []);
 
 
-  toast.success('Welcome Admin');
-
-
   return (
     <div className="admin">
       <Sidebar />
@@ -40,7 +37,6 @@ const AdminOutlet = () => {
         {/*</div>*/}
         <Outlet />
       </div>
-      <ToastContainer />
     </div>
   );
 };
