@@ -259,6 +259,7 @@ const Datatable = (props) => {
                 Выберите аккаунт
               </InputLabel>
               <Select
+                disabled={true}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={accaunt}

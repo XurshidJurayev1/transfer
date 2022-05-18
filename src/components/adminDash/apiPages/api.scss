@@ -1,6 +1,18 @@
-.dark__black{
-    background: black;
-    color: white;
-    padding: 20px 10px;
-   
+.api{
+    h2{
+        color: #4e73df;
+        font-size: 25px;
+        font-weight: 700;
+        @media (max-width: 768px) {
+            font-size: 18px;
+        }
+        margin-top: 40px;
+    }
+    h4{
+        font-size: 20px;
+        font-weight: 400;
+        margin: 20px 0;
+        font-weight: 600;
+        
+    }
 }
