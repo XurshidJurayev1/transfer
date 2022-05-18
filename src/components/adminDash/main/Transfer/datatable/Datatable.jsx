@@ -1,5 +1,5 @@
 import './datatable.scss';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { userColumns, userRows } from './datatablesource';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -30,6 +30,37 @@ const Datatable = (props) => {
 
   let list = props.list;
 
+  // const dateFilter = () => {
+  //   const data =
+  //     [{ id: 1, receive_date: '2021-02-12', remarks: '11' },
+  //       { id: 2, receive_date: '2021-03-22', remarks: '14' },
+  //       { id: 3, receive_date: '2021-03-20', remarks: '11' },
+  //       { id: 3, receive_date: '2021-03-12', remarks: '11' },
+  //       { id: 3, receive_date: '2021-03-11', remarks: '11' },
+  //       { id: 3, receive_date: '2021-03-10', remarks: '11' },
+  //       { id: 3, receive_date: '2021-03-4', remarks: '11' },
+  //       { id: 3, receive_date: '2021-03-28', remarks: '11' },
+  //       { id: 3, receive_date: '2021-03-27', remarks: '11' },
+  //       { id: 3, receive_date: '2021-03-29', remarks: '11' },
+  //       { id: 4, receive_date: '2021-03-21', remarks: '15' }];
+  //
+  //   const input1 = 'March 1, 2021';
+  //   const input2 = 'March 25, 2021';
+  //   const inputTS = new Date(input1).getTime();
+  //   const inputTS2 = new Date(input2).getTime();
+  //
+  //   console.log(inputTS);
+  //
+  //   const result1 = data.filter(d => inputTS <= Date.parse(d.receive_date));
+  //   const result2 = result1.filter(d => Date.parse(d.receive_date) <= inputTS2);
+  //
+  //   console.log('result1', result1);
+  //   console.log(result2);
+  //   return result2;
+  // };
+  //
+  // console.log(dateFilter());
+
   const filtr = (e) => {
 
     const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
@@ -38,8 +69,13 @@ const Datatable = (props) => {
       .filter(i => pay === '' ? i : i.turi === pay);
 // .filter(i => date1 || date2 ? new Date(date1) < new Date(i.create_time) < new Date(date2) : i);
 
-    const res = list.filter(i => new Date(i.create_time) > new Date(i.create_time));
-    console.log(new Date('07.05.2022 03:54:16'));
+    const getDate1 = new Date(date1).getTime();
+    const getDate2 = new Date(date2).getTime();
+
+
+    const res = list.filter(i => getDate1 <= Date.parse(i.create_time));
+    // .filter(i => Date.parse(i.create_time) <= getDate2);
+    console.log(res);
 
 
     setFiltred(result);
@@ -109,12 +145,9 @@ const Datatable = (props) => {
 
   const fileName = 'MySheets';
 
-  console.log(summaStatus);
-  console.log(summa);
 
   const allSumma = () => {
     setSummaStatus(true);
-    console.log(summa);
     if (filtrFunc) {
       const totalCount = filtred.reduce((total, item) => {
         return total + Number(item.amount);
@@ -147,6 +180,20 @@ const Datatable = (props) => {
     return number;
   };
 
+
+  // function filterTimes(arr, min, max) {
+  //   min = new Date('01-01-2017 ' + min).valueOf();
+  //   max = new Date('01-01-2017 ' + max).valueOf();
+  //   console.log(min);
+  //   return arr.filter(function (a) {
+  //     var d = new Date('01-01-2017 ' + a.create_time).valueOf();
+  //     if (d > min && d < max) return a;
+  //   });
+  // }
+  //
+  // console.log(filterTimes(list, date1, date2));
+
+
   return (<div className="datatable">
     <div className="datatableTitle">
       <Box
@@ -160,6 +207,7 @@ const Datatable = (props) => {
                   renderInput={(props) => <TextField {...props} />}
                   label="Выборка дат с"
                   value={date1}
+                  format="DD-MM-YYYY"
                   onChange={(newValue) => {
                     setDate1(newValue);
                   }}
@@ -174,6 +222,7 @@ const Datatable = (props) => {
                   renderInput={(props) => <TextField {...props} />}
                   label="Выборка дат до"
                   value={date2}
+                  format="DD-MM-YYYY"
                   onChange={(newValue) => {
                     setDate2(newValue);
                   }}
@@ -275,9 +324,7 @@ const Datatable = (props) => {
           <button type="button" className="btn btn-info primary_btn" style={{ marginRight: '20px' }} onClick={allSumma}>
             Сумма
           </button>
-          {summaStatus && <p> Общая сумма: {
-            summa.toDivide()
-          } </p>}
+          {summaStatus && <p> Общая сумма: {summa.toDivide()} </p>}
         </Box>
 
       </Box>
@@ -291,6 +338,7 @@ const Datatable = (props) => {
       pageSize={9}
       rowsPerPageOptions={[9]}
       checkboxSelection
+      components={{ Toolbar: GridToolbar }}
     />
   </div>);
 };

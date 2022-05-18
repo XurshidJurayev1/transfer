@@ -2,6 +2,7 @@ import React, { lazy, useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import MaterialUIPickers from '../components/adminDash/main/Transfer/datatable/date';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 const AdminOutlet = lazy(() => import('../components/adminDash/AdminOutlet'));
@@ -14,9 +15,6 @@ const Info = lazy(() => import('../components/adminDash/PageInformation/PageInfo
 const Index = (props) => {
   const [admin, setAdmin] = useState(false);
 
-
-  console.log(props);
-  console.log(admin);
 
   const func = () => {
     if (props.role.length > 0) {
@@ -34,6 +32,12 @@ const Index = (props) => {
 
 
   }, [props.role]);
+
+  if (props.error) {
+    toast.error(props.error.message);
+  }
+
+
 
   return (<Routes>
 
@@ -65,7 +69,7 @@ const Index = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    role: state.role, token: state.token,
+    role: state.role, token: state.token, error: state.error,
   };
 };
 

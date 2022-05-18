@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Logon.scss';
 import { connect } from 'react-redux';
-import { login } from '../action';
+import { fetchLogin, login } from '../action';
 import { useNavigate } from 'react-router-dom';
-import { useToasts } from 'react-toast-notifications';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = (props) => {
@@ -28,14 +29,13 @@ const Login = (props) => {
 
   const submit = (e) => {
     e.preventDefault();
-    props.login({ email, password });
+    props.fetchLogin({ email, password });
   };
-
-  console.log(props.loginStatus);
 
 
   return (<div className="login">
     <div className="container">
+      <ToastContainer />
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="login__form mt-5">
@@ -46,7 +46,7 @@ const Login = (props) => {
                   <i className="fa-solid fa-at"></i>
                   <input
                     placeholder="Enter Email Address..."
-                    type="text"
+                    type="email"
                     className="login__input form-control form-control-user"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -78,8 +78,8 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     token: state.token, role: state.role, // user: state.user,
-    loginStatus: state.login,
+    error: state.error,
   };
 };
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, fetchLogin })(Login);
