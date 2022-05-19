@@ -1,6 +1,7 @@
 import React from 'react';
 import './info.scss';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 const PageInfo = (props) => {
 
@@ -28,6 +29,13 @@ const PageInfo = (props) => {
 
   return (
     <div>
+      <Helmet>
+      <meta charSet="utf-8" />
+      <meta name='' content='' />
+      <title>Cabinet | Info</title>
+      <link rel="canonical" href="http://mysite.com/example" />
+    </Helmet>
+
       <div className="col-md-12">
         <h1 className="aler alert-warning text-warning text-center">info</h1>
       </div>
@@ -44,7 +52,7 @@ const PageInfo = (props) => {
           <div className="col-lg-6">
             <ul className="list-group list-group-light">
               <li className="list-group-item px-3">{user.acc_id}</li>
-              <li className="list-group-item px-3">{Number(user.acc_ball).toDivide()} <b>wsm</b></li>
+              <li className="list-group-item px-3">{Number(user.acc_ball).toDivide()} <b>uzs</b></li>
               <li className="list-group-item px-3">{user.acc_ip}</li>
               <li className="list-group-item px-3">{user.api_key}</li>
             </ul>

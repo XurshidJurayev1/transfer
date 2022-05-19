@@ -1,12 +1,20 @@
-import "./list.scss"
-import Datatable from "./datatable/Datatable"
+import './list.scss';
+import Datatable from './datatable/Datatable';
+import { Helmet } from 'react-helmet';
+import React from 'react';
 
 const TransferList = () => {
   return (
     <>
-      <Datatable/>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="" content="" />
+        <title>Cabinet | Transfer</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Datatable />
     </>
-  )
-}
+  );
+};
 
-export default TransferList
+export default TransferList;

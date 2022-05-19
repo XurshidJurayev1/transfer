@@ -10,6 +10,7 @@ import {
   materialOceanic,
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import './api.scss';
+import { Helmet } from 'react-helmet';
 
 const ApiMain = () => {
 
@@ -337,6 +338,12 @@ echo $response;
 
   return (
     <div className="api">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="" content="" />
+        <title>Cabinet | Api</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="col-md-12">
         <h1 className="aler alert-warning text-success text-center">Api</h1>
       </div>

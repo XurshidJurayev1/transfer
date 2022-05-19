@@ -5,6 +5,7 @@ import { fetchLogin, login } from '../action';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet';
 
 
 const Login = (props) => {
@@ -34,6 +35,12 @@ const Login = (props) => {
 
 
   return (<div className="login">
+    <Helmet>
+      <meta charSet="utf-8" />
+      <meta name="" content="" />
+      <title>UzPay | Login</title>
+      <link rel="canonical" href="http://mysite.com/example" />
+    </Helmet>
     <div className="container">
       <ToastContainer />
       <div className="row justify-content-center">
