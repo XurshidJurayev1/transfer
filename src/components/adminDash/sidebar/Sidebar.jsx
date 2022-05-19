@@ -75,7 +75,7 @@ const Sidebar = () => {
           <Link to="/admin/transfer">
             <li>
               <CreditCardIcon className="icon" />
-              <span>repor</span>
+              <span>report</span>
             </li>
           </Link>
 

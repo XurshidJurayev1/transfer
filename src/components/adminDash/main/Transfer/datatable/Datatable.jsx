@@ -30,36 +30,38 @@ const Datatable = (props) => {
 
   let list = props.list;
 
-  // const dateFilter = () => {
-  //   const data =
-  //     [{ id: 1, receive_date: '2021-02-12', remarks: '11' },
-  //       { id: 2, receive_date: '2021-03-22', remarks: '14' },
-  //       { id: 3, receive_date: '2021-03-20', remarks: '11' },
-  //       { id: 3, receive_date: '2021-03-12', remarks: '11' },
-  //       { id: 3, receive_date: '2021-03-11', remarks: '11' },
-  //       { id: 3, receive_date: '2021-03-10', remarks: '11' },
-  //       { id: 3, receive_date: '2021-03-4', remarks: '11' },
-  //       { id: 3, receive_date: '2021-03-28', remarks: '11' },
-  //       { id: 3, receive_date: '2021-03-27', remarks: '11' },
-  //       { id: 3, receive_date: '2021-03-29', remarks: '11' },
-  //       { id: 4, receive_date: '2021-03-21', remarks: '15' }];
-  //
-  //   const input1 = 'March 1, 2021';
-  //   const input2 = 'March 25, 2021';
-  //   const inputTS = new Date(input1).getTime();
-  //   const inputTS2 = new Date(input2).getTime();
-  //
-  //   console.log(inputTS);
-  //
-  //   const result1 = data.filter(d => inputTS <= Date.parse(d.receive_date));
-  //   const result2 = result1.filter(d => Date.parse(d.receive_date) <= inputTS2);
-  //
-  //   console.log('result1', result1);
-  //   console.log(result2);
-  //   return result2;
-  // };
-  //
-  // console.log(dateFilter());
+  const dateFilter = () => {
+    const data =
+      [{ id: 1, receive_date: '07.03.2022 05:13:03', remarks: '11' },
+        { id: 2, receive_date: '07.05.2022 05:13:03', remarks: '14' },
+        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
+        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
+        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
+        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
+        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
+        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
+        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
+        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
+        { id: 4, receive_date: '07.05.2022 05:13:03', remarks: '15' }];
+
+    const input1 = 'May 1, 2021';
+    const input2 = 'March 25, 2021';
+    const inputTS = new Date(input1).getTime();
+    const inputTS2 = new Date(input2).getTime();
+
+    console.log(inputTS);
+
+    console.log(Date.parse(data[0].receive_date) > inputTS ? 'true' : 'false');
+
+    const result1 = data.filter(d => inputTS <= Date.parse(d.receive_date));
+    const result2 = result1.filter(d => Date.parse(d.receive_date) <= inputTS2);
+
+    console.log('result1', result1);
+    console.log(result2);
+    return result2;
+  };
+
+  console.log(dateFilter());
 
   const filtr = (e) => {
 
@@ -72,13 +74,12 @@ const Datatable = (props) => {
     const getDate1 = new Date(date1).getTime();
     const getDate2 = new Date(date2).getTime();
 
+    console.log(getDate1);
 
-    const res = list.filter(i => getDate1 <= Date.parse(i.create_time));
-    // .filter(i => Date.parse(i.create_time) <= getDate2);
+    const res = list.filter(i => Date.parse(i.create_time) >= getDate1);
+    // .filter(i => Date.pa07.05.2022 05:13:03_time) <= getDate2);
     console.log(res);
 
-
-    setFiltred(result);
     setFiltrFunc(true);
 
   };
