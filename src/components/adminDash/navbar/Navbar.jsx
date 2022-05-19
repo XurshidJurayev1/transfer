@@ -7,11 +7,20 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import { useContext, useState } from 'react';
 import { DarkModeContext } from '../../../context/darkModeContext';
+import { connect } from 'react-redux';
+import { logout } from '../../../action';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const navigate = useNavigate();
   const { dispatch } = useContext(DarkModeContext);
   const [nav, setNav] = useState(false);
 
+
+  const func = () => {
+    navigate('/');
+    props.logout();
+  };
 
   return (
     <div className="navbar">
@@ -41,27 +50,19 @@ const Navbar = () => {
               onClick={() => dispatch({ type: 'TOGGLE' })}
             />
           </div>
-
-          {/*<div className="item">*/}
-          {/*  <NotificationsNoneOutlinedIcon className="icon" />*/}
-          {/*  <div className="counter">1</div>*/}
-          {/*</div>*/}
-          {/*<div className="item">*/}
-          {/*  <ChatBubbleOutlineOutlinedIcon className="icon" />*/}
-          {/*  <div className="counter">2</div>*/}
-          {/*</div>*/}
-
           <div className="item">
-            <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="avatar"
-            />
+            <button className="btn btn-danger" onClick={() => func()}>Logout</button>
           </div>
+
+
         </div>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, { logout })(Navbar);

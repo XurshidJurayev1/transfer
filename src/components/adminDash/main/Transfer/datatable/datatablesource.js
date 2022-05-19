@@ -39,7 +39,7 @@ export const userColumns = [
   },
   {
     field: 'create_time',
-    headerName: 'Дата заявки',
+    headerName: 'Начало заявки',
     width: 230,
   },
   {
@@ -49,7 +49,7 @@ export const userColumns = [
   },
   {
     field: 'final_time',
-    headerName: 'Дата заявки',
+    headerName: 'Окончание заявки',
     width: 230,
   },
   {

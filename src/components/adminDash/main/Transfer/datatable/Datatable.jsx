@@ -24,7 +24,7 @@ const Datatable = (props) => {
   const [filtred, setFiltred] = useState('');
   const [filtrFunc, setFiltrFunc] = useState(false);
   const [date1, setDate1] = useState(new Date('mm/dd/yyyy'));
-  const [date2, setDate2] = useState(new Date('mm/dd/yyyy'));
+  const [date2, setDate2] = useState(new Date(Date()));
   const [summaStatus, setSummaStatus] = useState(false);
   const [summa, setSumma] = useState(0);
 

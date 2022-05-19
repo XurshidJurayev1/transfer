@@ -13,6 +13,12 @@ export const listTransfer = () => async (dispatch) => {
   });
 };
 
+export const logout = () => async (dispatch) => {
+  dispatch({
+    type: 'LOGOUT', payload: '',
+  });
+};
+
 export const login = ({ email, password }) => async (dispatch) => {
   // const res = await api.post('/login', { email, password });
   // console.log(res);
