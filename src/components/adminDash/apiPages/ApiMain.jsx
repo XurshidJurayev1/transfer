@@ -349,7 +349,7 @@ echo $response;
             <div className="api__paymet">
               <h4>Headers</h4>
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-5">
                   <div className="api__conteType">
                     <ul className="list-group list-group-light">
                       <li className="list-group-item px-3"><b>Content-Type</b></li>
@@ -358,7 +358,7 @@ echo $response;
                     </ul>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Value</b></li>
                     <li className="list-group-item px-3">application/json</li>
@@ -431,7 +431,7 @@ echo $response;
             <div className="api__paymet">
               <h4>Headers</h4>
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <ul className="list-group list-group-light">
                       <li className="list-group-item px-3"><b>Content-Type</b></li>
@@ -440,7 +440,7 @@ echo $response;
                     </ul>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Value</b></li>
                     <li className="list-group-item px-3">application/json</li>
@@ -567,7 +567,7 @@ echo $response;
               <hr />
               <h4>Headers</h4>
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <ul className="list-group list-group-light">
                       <li className="list-group-item px-3"><b>Content-Type</b></li>
@@ -575,7 +575,7 @@ echo $response;
                     </ul>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Value</b></li>
                     <li className="list-group-item px-3">Токен полученный в кабинете Merchant</li>
@@ -628,7 +628,7 @@ echo $response;
               <hr />
               <h4>Headers</h4>
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <ul className="list-group list-group-light">
                       <li className="list-group-item px-3"><b>Content-Type</b></li>
@@ -637,7 +637,7 @@ echo $response;
                     </ul>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Value</b></li>
                     <li className="list-group-item px-3">application/json</li>
@@ -694,7 +694,7 @@ echo $response;
               <hr />
               <h4>Headers</h4>
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <ul className="list-group list-group-light">
                       <li className="list-group-item px-3"><b>Content-Type</b></li>
@@ -703,7 +703,7 @@ echo $response;
                     </ul>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Value</b></li>
                     <li className="list-group-item px-3">application/json</li>

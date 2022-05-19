@@ -1,7 +1,12 @@
 .datatable {
-  height: 105vh;
+  height: 70vh;
   padding: 20px;
-  margin-bottom: 150vh;
+  margin-bottom: 30vh;
+
+  @media screen and(max-width: 576px) {
+    height: 115vh;
+    margin-bottom: 135vh;
+  }
 
   .datatableTitle {
     width: 100%;

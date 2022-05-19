@@ -336,10 +336,11 @@ const Datatable = (props) => {
       rows={filtrFunc ? filtred : list}
       loading={props.list.length === 0}
       columns={userColumns.concat(actionColumn)}
-      pageSize={9}
-      rowsPerPageOptions={[9]}
+      pageSize={10}
+      rowsPerPageOptions={[10]}
       checkboxSelection
       components={{ Toolbar: GridToolbar }}
+      // getGridDateOperators={true}
     />
   </div>);
 };
