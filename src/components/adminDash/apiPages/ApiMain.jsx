@@ -14,13 +14,16 @@ import { Helmet } from 'react-helmet';
 
 const ApiMain = () => {
 
+  const host = window.location.host;
+  console.log(host);
+
   const code1 = `
   <?php
 
   $curl = curl_init();
   
   curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://api.uzspay.com/api/v2/sms',
+  CURLOPT_URL => 'https://api.${host}/api/v2/sms',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -47,7 +50,7 @@ const ApiMain = () => {
   const code2 = `
   {
     "error": false,
-    "opid": 32, 
+    "opid": 32, // ID в нашей системе
     "status": "success", // Успешно
     "message": "Платеж прошел успешно"
 }
@@ -65,7 +68,7 @@ const ApiMain = () => {
   $curl = curl_init();
   
   curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://api.uzspay.com/api/v2/payout',
+  CURLOPT_URL => 'https://api.${host}/api/v2/payout',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -93,7 +96,7 @@ const ApiMain = () => {
   const code4 = ` 
   {
     "error": false,
-    "opid": 32, 
+    "opid": 32, // ID в нашей системе
     "status": "success", // Успешно
     "message": "Платеж прошел успешно"
 }
@@ -109,7 +112,7 @@ const ApiMain = () => {
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://api.uzspay.com/api/v2/checkOpid',
+CURLOPT_URL => 'https://api.${host}/api/v2/checkOpid',
 CURLOPT_RETURNTRANSFER => true,
 CURLOPT_ENCODING => '',
 CURLOPT_MAXREDIRS => 10,
@@ -156,7 +159,7 @@ echo $response;
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://api.uzspay.com/api/v2/historyIn',
+CURLOPT_URL => 'https://api.${host}/api/v2/historyIn',
 CURLOPT_RETURNTRANSFER => true,
 CURLOPT_ENCODING => '',
 CURLOPT_MAXREDIRS => 10,
@@ -222,7 +225,7 @@ echo $response;
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://api.uzspay.com/api/v2/historyOut',
+CURLOPT_URL => 'https://api.${host}/api/v2/historyOut',
 CURLOPT_RETURNTRANSFER => true,
 CURLOPT_ENCODING => '',
 CURLOPT_MAXREDIRS => 10,
@@ -266,7 +269,7 @@ echo $response;
         card: "8600332939001412",
         create_time: "18.05.2022 17:05:43",
         final_time: "18.05.2022 17:05:53"
-        opid: "168201",
+        opid: "168201", 
         comission: "5757.00",
         status: "false"
     },
@@ -288,7 +291,7 @@ echo $response;
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://api.uzspay.com/api/v2/pay',
+  CURLOPT_URL => 'https://api.${host}/api/v2/pay',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -322,7 +325,7 @@ echo $response;
 
   const code12 = `   {
         "error": false,
-        "opid": 32, 
+        "opid": 32, // ID в нашей системе
         "status": "success", // Успешно
         "commission": 10, // Установленная комиссия
         "name": "Иван Иванов ", // Ф.И.О. владельца карты 
