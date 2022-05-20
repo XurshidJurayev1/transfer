@@ -47,7 +47,7 @@ const ApiMain = () => {
   const code2 = `
   {
     "error": false,
-    "opid": 32, // ID в UZCARDAPI.RU
+    "opid": 32, 
     "status": "success", // Успешно
     "message": "Платеж прошел успешно"
 }
@@ -93,7 +93,7 @@ const ApiMain = () => {
   const code4 = ` 
   {
     "error": false,
-    "opid": 32, // ID в uzspay.com
+    "opid": 32, 
     "status": "success", // Успешно
     "message": "Платеж прошел успешно"
 }
@@ -322,7 +322,7 @@ echo $response;
 
   const code12 = `   {
         "error": false,
-        "opid": 32, // ID в UZSPAY
+        "opid": 32, 
         "status": "success", // Успешно
         "commission": 10, // Установленная комиссия
         "name": "Иван Иванов ", // Ф.И.О. владельца карты 
@@ -395,11 +395,11 @@ echo $response;
                 <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Описание</b></li>
-                    <li className="list-group-item px-3">ID Вашего магазина в системе uzspay</li>
+                    <li className="list-group-item px-3">ID Вашего магазина в системе </li>
                     <li className="list-group-item px-3">Сумма заказа</li>
                     <li className="list-group-item px-3">Номер карты (отправителя UZCARD или HUMO) 8600123456789012</li>
                     <li className="list-group-item px-3">Срок карты (отправителя) 2501 ГГ/ММ</li>
-                    <li className="list-group-item px-3">Прием на баланс UZ кошелка в системе uzspay</li>
+                    <li className="list-group-item px-3">Прием на баланс UZ кошелка в системе </li>
                     <li className="list-group-item px-3">Id заказа в системе Мерчанта</li>
                     <li className="list-group-item px-3">Id клиента в системе Мерчанта</li>
                     <li className="list-group-item px-3">Ip адрес клиента</li>
@@ -542,7 +542,7 @@ echo $response;
                 <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Описание</b></li>
-                    <li className="list-group-item px-3">ID Вашего магазина в системе uzspay</li>
+                    <li className="list-group-item px-3">ID Вашего магазина в системе </li>
                     <li className="list-group-item px-3">Номер карты зачисления</li>
                     <li className="list-group-item px-3">Сумма зачисления</li>
                   </div>
@@ -605,7 +605,7 @@ echo $response;
                 <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Описание</b></li>
-                    <li className="list-group-item px-3">ID Вашего магазина в системе uzspay</li>
+                    <li className="list-group-item px-3">ID Вашего магазина в системе </li>
                     <li className="list-group-item px-3">Id Транзакции в нашей системе</li>
                   </div>
                 </div>
@@ -669,7 +669,7 @@ echo $response;
                 <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Описание</b></li>
-                    <li className="list-group-item px-3">ID Вашего магазина в системе uzspay</li>
+                    <li className="list-group-item px-3">ID Вашего магазина в системе </li>
                     <li className="list-group-item px-3">Дата начала в формате UNIX_TIMESTAMP</li>
                     <li className="list-group-item px-3">Дата конца в формате UNIX_TIMESTAMP</li>
                   </div>
@@ -735,7 +735,7 @@ echo $response;
                 <div className="col-md-4">
                   <div className="api__conteType">
                     <li className="list-group-item px-3"><b>Описание</b></li>
-                    <li className="list-group-item px-3">ID Вашего магазина в системе uzspay</li>
+                    <li className="list-group-item px-3">ID Вашего магазина в системе </li>
                     <li className="list-group-item px-3">Дата начала в формате UNIX_TIMESTAMP</li>
                     <li className="list-group-item px-3">Дата конца в формате UNIX_TIMESTAMP</li>
                   </div>
