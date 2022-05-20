@@ -8,7 +8,7 @@ const TransferList = () => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <meta name="" content="" />
+        <meta name="" content="cabinet transfer report uzspay" />
         <title>Cabinet | Transfer</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>

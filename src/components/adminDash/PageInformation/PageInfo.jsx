@@ -30,11 +30,11 @@ const PageInfo = (props) => {
   return (
     <div>
       <Helmet>
-      <meta charSet="utf-8" />
-      <meta name='' content='' />
-      <title>Cabinet | Info</title>
-      <link rel="canonical" href="http://mysite.com/example" />
-    </Helmet>
+        <meta charSet="utf-8" />
+        <meta name="" content="cabinet info uzspay" />
+        <title>Cabinet | Info</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
 
       <div className="col-md-12">
         <h1 className="aler alert-warning text-warning text-center">info</h1>

@@ -340,7 +340,7 @@ echo $response;
     <div className="api">
       <Helmet>
         <meta charSet="utf-8" />
-        <meta name="" content="" />
+        <meta name="" content="Cabinet api uzspay" />
         <title>Cabinet | Api</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
