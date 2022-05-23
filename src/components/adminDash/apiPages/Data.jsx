@@ -63,7 +63,7 @@ export const data2 = [
     {
         id: 1,
         name: "merchant_id",
-        title: "ID Вашего магазина в системе",
+        title: "ID Вашего мерчанта в системе",
         type: 'string',
     },
     {
@@ -87,7 +87,7 @@ export const data2 = [
     {
         id: 5,
         name: 'k',
-        title: 'Прием на баланс UZ кошелка в системе',
+        title: 'Валюта приема UZS RUB USD',
         type: 'string',
     },
     {
@@ -214,7 +214,7 @@ export const data6 = [
     {
         id: 1,
         name: 'merchant_id',
-        title: 'ID Вашего магазина в системе',
+        title: 'ID Вашего мерчанта в системе',
         type: "string"
     },
     {
@@ -269,7 +269,7 @@ export const data8 = [
     {
         id: 1,
         name: 'merchant_id',
-        title: 'ID Вашего магазина в системе',
+        title: 'ID Вашего мерчанта в системе',
         type: "string"
     },
     {
@@ -329,7 +329,7 @@ export const data10 = [
     {
         id: 1,
         name: 'merchant_id',
-        title: 'ID Вашего магазина в системе',
+        title: 'ID Вашего мерчанта в системе',
         type: "string"
     },
     {
@@ -393,7 +393,7 @@ export const data12 = [
     {
         id: 1,
         name: 'merchant_id',
-        title: 'ID Вашего магазина в системе',
+        title: 'ID Вашего мерчанта в системе',
         type: "string"
     },
     {

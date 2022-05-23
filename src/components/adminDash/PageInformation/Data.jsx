@@ -28,7 +28,7 @@ export const columns = [
         selector: row => row.accbal,
     },
     {
-        name: 'ACC IP:',
+        name: 'ACC ALLOWED IP:',
         selector: row => row.accip,
     },
     {
