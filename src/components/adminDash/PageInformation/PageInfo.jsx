@@ -2,6 +2,8 @@ import React from 'react';
 import './info.scss';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import DataTable from 'react-data-table-component';
+import { columns, customStyles, data } from './Data';
 
 const PageInfo = (props) => {
 
@@ -40,22 +42,9 @@ const PageInfo = (props) => {
         <h1 className="aler alert-warning text-warning text-center">info</h1>
       </div>
       <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <ul className="list-group list-group-light">
-              <li className="list-group-item px-3">ACC ID</li>
-              <li className="list-group-item px-3">ACC BALANCE</li>
-              <li className="list-group-item px-3">ACC IP</li>
-              <li className="list-group-item px-3">API KEY</li>
-            </ul>
-          </div>
-          <div className="col-lg-6">
-            <ul className="list-group list-group-light">
-              <li className="list-group-item px-3">{user.acc_id}</li>
-              <li className="list-group-item px-3">{Number(user.acc_ball).toDivide()} <b>uzs</b></li>
-              <li className="list-group-item px-3">{user.acc_ip}</li>
-              <li className="list-group-item px-3">{user.api_key}</li>
-            </ul>
+        <div className="row justify-content-center">
+          <div className="col-md-10">
+            <DataTable customStyles={customStyles} columns={columns} data={data} />
           </div>
         </div>
       </div>
