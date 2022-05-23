@@ -47,10 +47,10 @@ const PageInfo = (props) => {
             <div className="table__list">
               <div className="table__left">
                 <ul className="list-group list-group-light">
-                  <li className="list-group-item"><span>ACC ID:</span> <span>{user.acc_id}</span></li>
-                  <li className="list-group-item"><span>ACC BALANCE:</span> <span>{Number(user.acc_ball).toDivide()} <b>uzs</b></span></li>
-                  <li className="list-group-item"><span>ACC ALLOWED IP:</span> <span>{user.acc_ip}</span></li>
-                  <li className="list-group-item"><span>API KEY:</span> <span>{user.api_key}</span></li>
+                  <li className="list-group-item"><span className="table__span">ACC ID:</span> <span className="table__span2">{user.acc_id}</span></li>
+                  <li className="list-group-item"><span className="table__span">ACC BALANCE:</span> <span className="table__span2">{Number(user.acc_ball).toDivide()} <b>uzs</b></span></li>
+                  <li className="list-group-item"><span className="table__span">ACC ALLOWED IP:</span> <span className="table__span2">{user.acc_ip}</span></li>
+                  <li className="list-group-item"><span className="table__span">API KEY:</span> <span className="table__span2">{user.api_key}</span></li>
                 </ul>
               </div>
               {/* <div className="table__right">

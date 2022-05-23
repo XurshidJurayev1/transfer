@@ -1,14 +1,21 @@
 .table{
+    &__span{
+        text-align: end;
+    }
+    &__span2{
+        width: 60% !important;
+    }
     &__list{
         li{
             display: flex;
-            justify-content: space-between;
+            justify-content:center;
             margin: 5px 0;
             border: 0px solid #4e73df !important;
             padding: 0px;
+
             span{
                 border: 1px solid #4e73df;
-                width: 50%;
+                width: 30%;
                 padding: 10px 10px;
             }
         }
