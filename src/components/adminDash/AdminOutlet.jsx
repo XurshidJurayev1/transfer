@@ -27,15 +27,22 @@ const AdminOutlet = () => {
   return (
     <div className="admin">
       <Sidebar />
-      <div className={sidebar && width > 990 ? 'homeContainer activeDesk' : 'homeContainer'}>
+      <div className={sidebar && width > 990 ? 'homeContainer activeDesk' : 'homeContainer'}
+        // style={{ position: 'fixed' }}
+      >
+
         <Navbar />
+
         {/*<div className="widgets">*/}
         {/*  <Widget type="user" />*/}
         {/*  <Widget type="order" />*/}
         {/*  <Widget type="earning" />*/}
         {/*  <Widget type="balance" />*/}
         {/*</div>*/}
-        <Outlet />
+        <div style={{ paddingTop: '50px' }}>
+          <Outlet />
+        </div>
+
       </div>
     </div>
   );

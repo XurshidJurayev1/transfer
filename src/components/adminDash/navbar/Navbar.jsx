@@ -5,7 +5,7 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DarkModeContext } from '../../../context/darkModeContext';
 import { connect } from 'react-redux';
 import { logout } from '../../../action';
@@ -22,8 +22,23 @@ const Navbar = (props) => {
     props.logout();
   };
 
+  const { sidebar } = useContext(DarkModeContext);
+  const [width, setWidth] = useState(window.innerWidth);
+
+
+  useEffect(() => {
+    const handleWidth = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleWidth);
+
+    return () => {
+      window.addEventListener('resize', handleWidth);
+    };
+  }, []);
+
   return (
-    <div className="navbar">
+    <div className="navbar" style={sidebar && width > 990 ? { width: 'calc(100% - 200px)' } : { width: '100%' }}>
       <div className="wrapper">
         <div className="flex">
           <div className="items sidebar-btn">

@@ -4,7 +4,7 @@
   height: 100%;
   background-color: #4e73df;
   transition: all .3s ease-in-out;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
@@ -21,11 +21,13 @@
       font-weight: 400;
       color: white;
     }
-    .close-btn:hover{
+
+    .close-btn:hover {
       color: #7451f8;
       background: white;
       border: 2px solid white;
     }
+
     .close-btn {
       display: none;
       position: absolute;
@@ -109,14 +111,17 @@
         cursor: pointer;
         transition: 500ms;
         border: 1px solid white;
-        padding:5px;
+        padding: 5px;
         border-radius: 6px;
         margin: 0 5px 5px 0;
+
         &:hover {
           background-color: #ffffff;
-          span{
+
+          span {
             color: rgb(0, 0, 0);
           }
+
           .icon {
             color: rgb(0, 0, 0);
           }
