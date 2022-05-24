@@ -50,6 +50,13 @@ export const userColumns = [
     field: 'create_time',
     headerName: 'Начало заявки',
     width: 230,
+    renderCell: params => {
+      return (
+        <div className="important_rows_table">
+          <p>{params.row.create_time}</p>
+        </div>
+      );
+    },
 //     type: 'date',
 //     valueFormatter: (params: GridValueFormatterParams) => {
 //       // first converts to JS Date, then to locale option through date-fns
@@ -73,12 +80,12 @@ export const userColumns = [
   {
     field: 'final_time',
     headerName: 'Окончание заявки',
-    width: 230,
+    width: 200,
   },
   {
     field: 'status',
     headerName: 'Статус',
-    width: 230,
+    width: 100,
     renderCell: (params) => {
       let qwe = '';
 

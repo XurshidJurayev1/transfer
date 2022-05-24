@@ -122,7 +122,7 @@ const Datatable = (props) => {
 
 
   const actionColumn = [{
-    field: 'code_error', headerName: 'Код ошибки', width: 200, renderCell: (params) => {
+    field: 'code_error', headerName: 'Код ошибки', width: 130, renderCell: (params) => {
       return (<div className="cellAction" style={{
         width: '100%',
         height: '100%',
