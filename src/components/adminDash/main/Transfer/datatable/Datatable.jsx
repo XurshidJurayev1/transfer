@@ -80,9 +80,12 @@ const Datatable = (props) => {
     // .filter(i => Date.pa07.05.2022 05:13:03_time) <= getDate2);
     console.log(res);
 
+    setFiltred(result);
     setFiltrFunc(true);
 
   };
+
+  console.log(props);
 
   const reset = () => {
     setFiltred('');
