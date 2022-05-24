@@ -1,3 +1,6 @@
+import { GridValueGetterParams } from '@mui/x-data-grid';
+import { GridValueFormatterParams } from '@mui/x-data-grid';
+
 export const userColumns = [
   { field: 'id', headerName: 'ID', width: 130 },
 
@@ -27,25 +30,45 @@ export const userColumns = [
     headerName: 'Комиссия',
     width: 230,
   },
+  // {
+  //   field: 'card',
+  //   headerName: 'Отправитель',
+  //   width: 230,
+  // },
   {
     field: 'card',
-    headerName: 'Отправитель',
+    headerName: 'Отправитель-ID',
     width: 230,
   },
+  // {
+  //   field: 'card00',
+  //   headerName: 'Получатель',
+  //   width: 230,
+  // },
   {
-    field: 'card00',
-    headerName: 'Получатель',
-    width: 230,
-  },
-  {
+    flex: 1,
     field: 'create_time',
     headerName: 'Начало заявки',
     width: 230,
+//     type: 'date',
+//     valueFormatter: (params: GridValueFormatterParams) => {
+//       // first converts to JS Date, then to locale option through date-fns
+//       return formatDate(params.value);
+//     },
+// // valueGetter for filtering
+//     valueGetter: (params: GridValueGetterParams) => {
+//       return formatDate(params.value);
+//     },
   },
+  // {
+  //   field: 'create_time',
+  //   headerName: 'Начало заявки',
+  //   width: 230,
+  // },
   {
     field: 'amount',
     headerName: 'Сумма',
-    width: 230,
+    width: 130,
   },
   {
     field: 'final_time',

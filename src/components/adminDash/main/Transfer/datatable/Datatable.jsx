@@ -219,36 +219,36 @@ const Datatable = (props) => {
         className="filter-inputs">
         <Typography component="h1" mb={3} variant="h5"> Выберите метод фильтрации </Typography>
         <Box className="form_input_flex">
-          <Box className="form_input_fields">
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <Stack spacing={3}>
-                <DateTimePicker
-                  renderInput={(props) => <TextField {...props} />}
-                  label="Выборка дат с"
-                  value={date1}
-                  format="DD-MM-YYYY"
-                  onChange={(newValue) => {
-                    setDate1(newValue);
-                  }}
-                />
-              </Stack>
-            </LocalizationProvider>
-          </Box>
-          <Box className="form_input_fields">
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <Stack spacing={3}>
-                <DateTimePicker
-                  renderInput={(props) => <TextField {...props} />}
-                  label="Выборка дат до"
-                  value={date2}
-                  format="DD-MM-YYYY"
-                  onChange={(newValue) => {
-                    setDate2(newValue);
-                  }}
-                />
-              </Stack>
-            </LocalizationProvider>
-          </Box>
+          {/*<Box className="form_input_fields">*/}
+          {/*  <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
+          {/*    <Stack spacing={3}>*/}
+          {/*      <DateTimePicker*/}
+          {/*        renderInput={(props) => <TextField {...props} />}*/}
+          {/*        label="Выборка дат с"*/}
+          {/*        value={date1}*/}
+          {/*        format="DD-MM-YYYY"*/}
+          {/*        onChange={(newValue) => {*/}
+          {/*          setDate1(newValue);*/}
+          {/*        }}*/}
+          {/*      />*/}
+          {/*    </Stack>*/}
+          {/*  </LocalizationProvider>*/}
+          {/*</Box>*/}
+          {/*<Box className="form_input_fields">*/}
+          {/*  <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
+          {/*    <Stack spacing={3}>*/}
+          {/*      <DateTimePicker*/}
+          {/*        renderInput={(props) => <TextField {...props} />}*/}
+          {/*        label="Выборка дат до"*/}
+          {/*        value={date2}*/}
+          {/*        format="DD-MM-YYYY"*/}
+          {/*        onChange={(newValue) => {*/}
+          {/*          setDate2(newValue);*/}
+          {/*        }}*/}
+          {/*      />*/}
+          {/*    </Stack>*/}
+          {/*  </LocalizationProvider>*/}
+          {/*</Box>*/}
           <Box className="form_input_fields">
             <TextField
               type="number"
