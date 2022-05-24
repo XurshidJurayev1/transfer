@@ -31,18 +31,27 @@ const Datatable = (props) => {
   let list = props.list;
 
   const dateFilter = () => {
-    const data =
-      [{ id: 1, receive_date: '07.03.2022 05:13:03', remarks: '11' },
-        { id: 2, receive_date: '07.05.2022 05:13:03', remarks: '14' },
-        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
-        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
-        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
-        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
-        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
-        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
-        { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' },
-        { id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11' },
-        { id: 4, receive_date: '07.05.2022 05:13:03', remarks: '15' }];
+    const data = [{ id: 1, receive_date: '07.03.2022 05:13:03', remarks: '11' }, {
+      id: 2,
+      receive_date: '07.05.2022 05:13:03',
+      remarks: '14',
+    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+      id: 3,
+      receive_date: '07.03.2022 05:13:03',
+      remarks: '11',
+    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+      id: 3,
+      receive_date: '07.03.2022 05:13:03',
+      remarks: '11',
+    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+      id: 3,
+      receive_date: '07.03.2022 05:13:03',
+      remarks: '11',
+    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+      id: 3,
+      receive_date: '07.03.2022 05:13:03',
+      remarks: '11',
+    }, { id: 4, receive_date: '07.05.2022 05:13:03', remarks: '15' }];
 
     const input1 = 'May 1, 2021';
     const input2 = 'March 25, 2021';
@@ -89,6 +98,12 @@ const Datatable = (props) => {
 
   const reset = () => {
     setFiltred('');
+    setSumma('');
+    setAccount('');
+    setCardId('');
+    setCard('');
+    setDate1('');
+    setSummaStatus('');
     setFiltrFunc(false);
   };
 
