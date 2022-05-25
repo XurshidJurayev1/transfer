@@ -24,73 +24,96 @@ const Datatable = (props) => {
   const [filtred, setFiltred] = useState('');
   const [filtrFunc, setFiltrFunc] = useState(false);
   const [date1, setDate1] = useState(new Date('mm/dd/yyyy'));
-  const [date2, setDate2] = useState(new Date(Date()));
+  const [date2, setDate2] = useState(new Date('mm/dd/yyyy'));
   const [summaStatus, setSummaStatus] = useState(false);
   const [summa, setSumma] = useState(0);
 
   let list = props.list;
 
-  const dateFilter = () => {
-    const data = [{ id: 1, receive_date: '07.03.2022 05:13:03', remarks: '11' }, {
-      id: 2,
-      receive_date: '07.05.2022 05:13:03',
-      remarks: '14',
-    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
-      id: 3,
-      receive_date: '07.03.2022 05:13:03',
-      remarks: '11',
-    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
-      id: 3,
-      receive_date: '07.03.2022 05:13:03',
-      remarks: '11',
-    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
-      id: 3,
-      receive_date: '07.03.2022 05:13:03',
-      remarks: '11',
-    }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
-      id: 3,
-      receive_date: '07.03.2022 05:13:03',
-      remarks: '11',
-    }, { id: 4, receive_date: '07.05.2022 05:13:03', remarks: '15' }];
-
-    const input1 = 'May 1, 2021';
-    const input2 = 'March 25, 2021';
-    const inputTS = new Date(input1).getTime();
-    const inputTS2 = new Date(input2).getTime();
-
-    console.log(inputTS);
-
-    console.log(Date.parse(data[0].receive_date) > inputTS ? 'true' : 'false');
-
-    const result1 = data.filter(d => inputTS <= Date.parse(d.receive_date));
-    const result2 = result1.filter(d => Date.parse(d.receive_date) <= inputTS2);
-
-    console.log('result1', result1);
-    console.log(result2);
-    return result2;
-  };
-
-  console.log(dateFilter());
+  // const dateFilter = () => {
+  //   const data = [{ id: 1, receive_date: '07.03.2022 05:13:03', remarks: '11' }, {
+  //     id: 2, receive_date: '07.05.2022 05:13:03', remarks: '14',
+  //   }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+  //     id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11',
+  //   }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+  //     id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11',
+  //   }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+  //     id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11',
+  //   }, { id: 3, receive_date: '07.05.2022 05:13:03', remarks: '11' }, {
+  //     id: 3, receive_date: '07.03.2022 05:13:03', remarks: '11',
+  //   }, { id: 4, receive_date: '07.05.2022 05:13:03', remarks: '15' }];
+  //
+  //   const input1 = 'May 1, 2021';
+  //   const input2 = 'March 25, 2021';
+  //   const inputTS = new Date(input1).getTime();
+  //   const inputTS2 = new Date(input2).getTime();
+  //
+  //   console.log(inputTS);
+  //
+  //   console.log(Date.parse(data[0].receive_date) > inputTS ? 'true' : 'false');
+  //
+  //   const result1 = data.filter(d => inputTS <= Date.parse(d.receive_date));
+  //   const result2 = result1.filter(d => Date.parse(d.receive_date) <= inputTS2);
+  //
+  //   console.log('result1', result1);
+  //   console.log(result2);
+  //   return result2;
+  // };
+  //
+  // console.log(dateFilter());
 
   const filtr = (e) => {
+    const getDate1 = new Date(date1);
+    const getDate2 = new Date(date2);
 
-    const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
-      .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
-      .filter(i => status === '' ? i : i.status === status)
-      .filter(i => pay === '' ? i : i.turi === pay);
-// .filter(i => date1 || date2 ? new Date(date1) < new Date(i.create_time) < new Date(date2) : i);
+    if (isNaN(getDate1) && isNaN(getDate2)) {
+      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+        .filter(i => status === '' ? i : i.status === status)
+        .filter(i => pay === '' ? i : i.turi === pay);
+      // .filter(i => new Date(i.create_time) < getDate2)
+      // .filter(i => new Date(i.create_time) > getDate1);
 
-    const getDate1 = new Date(date1).getTime();
-    const getDate2 = new Date(date2).getTime();
+      setFiltred(result);
+      setFiltrFunc(true);
+    }
 
-    console.log(getDate1);
+    if (!isNaN(getDate2) && isNaN(getDate1)) {
 
-    const res = list.filter(i => Date.parse(i.create_time) >= getDate1);
-    // .filter(i => Date.pa07.05.2022 05:13:03_time) <= getDate2);
-    console.log(res);
+      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+        .filter(i => status === '' ? i : i.status === status)
+        .filter(i => pay === '' ? i : i.turi === pay)
+        .filter(i => new Date(i.create_time) < getDate2);
 
-    setFiltred(result);
-    setFiltrFunc(true);
+
+      setFiltred(result);
+      setFiltrFunc(true);
+    }
+    if (isNaN(getDate2) && !isNaN(getDate1)) {
+
+      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+        .filter(i => status === '' ? i : i.status === status)
+        .filter(i => pay === '' ? i : i.turi === pay)
+        .filter(i => new Date(i.create_time) > getDate1);
+
+
+      setFiltred(result);
+      setFiltrFunc(true);
+    }
+    if (!isNaN(getDate1) && !isNaN(getDate2)) {
+      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+        .filter(i => status === '' ? i : i.status === status)
+        .filter(i => pay === '' ? i : i.turi === pay)
+        .filter(i => new Date(i.create_time) < getDate2)
+        .filter(i => new Date(i.create_time) > getDate1);
+
+      setFiltred(result);
+      setFiltrFunc(true);
+    }
+
 
   };
 
@@ -102,7 +125,8 @@ const Datatable = (props) => {
     setAccount('');
     setCardId('');
     setCard('');
-    setDate1('');
+    setDate1('mm/dd/yyyy');
+    setDate2('mm/dd/yyyy');
     setSummaStatus('');
     setFiltrFunc(false);
   };
@@ -219,36 +243,36 @@ const Datatable = (props) => {
         className="filter-inputs">
         <Typography component="h1" mb={3} variant="h5"> Выберите метод фильтрации </Typography>
         <Box className="form_input_flex">
-          {/*<Box className="form_input_fields">*/}
-          {/*  <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
-          {/*    <Stack spacing={3}>*/}
-          {/*      <DateTimePicker*/}
-          {/*        renderInput={(props) => <TextField {...props} />}*/}
-          {/*        label="Выборка дат с"*/}
-          {/*        value={date1}*/}
-          {/*        format="DD-MM-YYYY"*/}
-          {/*        onChange={(newValue) => {*/}
-          {/*          setDate1(newValue);*/}
-          {/*        }}*/}
-          {/*      />*/}
-          {/*    </Stack>*/}
-          {/*  </LocalizationProvider>*/}
-          {/*</Box>*/}
-          {/*<Box className="form_input_fields">*/}
-          {/*  <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
-          {/*    <Stack spacing={3}>*/}
-          {/*      <DateTimePicker*/}
-          {/*        renderInput={(props) => <TextField {...props} />}*/}
-          {/*        label="Выборка дат до"*/}
-          {/*        value={date2}*/}
-          {/*        format="DD-MM-YYYY"*/}
-          {/*        onChange={(newValue) => {*/}
-          {/*          setDate2(newValue);*/}
-          {/*        }}*/}
-          {/*      />*/}
-          {/*    </Stack>*/}
-          {/*  </LocalizationProvider>*/}
-          {/*</Box>*/}
+          <Box className="form_input_fields">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Stack spacing={3}>
+                <DateTimePicker
+                  renderInput={(props) => <TextField {...props} />}
+                  label="Выборка дат с"
+                  value={date1}
+                  format="DD-MM-YYYY"
+                  onChange={(newValue) => {
+                    setDate1(newValue);
+                  }}
+                />
+              </Stack>
+            </LocalizationProvider>
+          </Box>
+          <Box className="form_input_fields">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <Stack spacing={3}>
+                <DateTimePicker
+                  renderInput={(props) => <TextField {...props} />}
+                  label="Выборка дат до"
+                  value={date2}
+                  format="DD-MM-YYYY"
+                  onChange={(newValue) => {
+                    setDate2(newValue);
+                  }}
+                />
+              </Stack>
+            </LocalizationProvider>
+          </Box>
           <Box className="form_input_fields">
             <TextField
               type="number"
@@ -357,9 +381,9 @@ const Datatable = (props) => {
       columns={userColumns.concat(actionColumn)}
       pageSize={10}
       rowsPerPageOptions={[10]}
-      checkboxSelection
+      // checkboxSelection
       components={{ Toolbar: GridToolbar }}
-      // getGridDateOperators={true}
+      getGridDateOperators={true}
     />
   </div>);
 };
