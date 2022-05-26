@@ -1,3 +1,26 @@
+.css-1ht8sh5-MuiTypography-root{
+  @media (max-width: 400px) {
+    text-align: center;
+    font-size: 20px;
+  }  
+}
+@media (max-width: 540px) {
+  .MuiBox-root{
+    justify-content: center;
+  }
+}
+@media (max-width: 400px) {
+  .datatable .datatableTitle .filter-inputs .primary_btn{
+    width: 120px !important;
+  }
+  .css-ypofq1-MuiDataGrid-toolbarContainer{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .css-1knaqv7-MuiButtonBase-root-MuiButton-root{
+    margin: 5px 20px;
+  }
+}
 .datatable {
   height: 70vh;
   padding: 20px;
