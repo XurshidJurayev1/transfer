@@ -205,6 +205,15 @@ const Datatable = (props) => {
     }
   };
 
+  function convertDate(inputFormat) {
+    function pad(s) {
+      return (s < 10) ? '0' + s : s;
+    }
+
+    var d = new Date(inputFormat);
+    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+  }
+
   Number.prototype.toDivide = function () {
     var int = String(this);
     if (int.length <= 3) return int;
@@ -247,10 +256,11 @@ const Datatable = (props) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={3}>
                 <DateTimePicker
+
                   renderInput={(props) => <TextField {...props} />}
                   label="Выборка дат с"
                   value={date1}
-                  format="DD-MM-YYYY"
+                  inputFormat="dd.MM.yyyy - HH:mm"
                   onChange={(newValue) => {
                     setDate1(newValue);
                   }}
@@ -265,7 +275,7 @@ const Datatable = (props) => {
                   renderInput={(props) => <TextField {...props} />}
                   label="Выборка дат до"
                   value={date2}
-                  format="DD-MM-YYYY"
+                  inputFormat="dd.MM.yyyy - HH:mm"
                   onChange={(newValue) => {
                     setDate2(newValue);
                   }}

@@ -1,5 +1,16 @@
 import { GridValueGetterParams } from '@mui/x-data-grid';
 import { GridValueFormatterParams } from '@mui/x-data-grid';
+import { format } from 'date-fns';
+import Moment from 'react-moment';
+
+function convertDate(inputFormat) {
+  function pad(s) {
+    return (s < 10) ? '0' + s : s;
+  }
+
+  var d = new Date(inputFormat);
+  return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+}
 
 export const userColumns = [
   { field: 'id', headerName: 'ID', width: 130 },
@@ -53,7 +64,11 @@ export const userColumns = [
     renderCell: params => {
       return (
         <div className="important_rows_table">
-          <p>{params.row.create_time}</p>
+          {/*<p>{convertDate(params.row.create_time)}</p>*/}
+          <Moment format="D MMM YYYY - HH:mm:ss" withTitle>{params.row.create_time}</Moment>
+          <time></time>
+
+          {/*<p>{format(new Date(params.row.create_time), 'dd/MM/Y - HH:mm:ss')}</p>*/}
         </div>
       );
     },
