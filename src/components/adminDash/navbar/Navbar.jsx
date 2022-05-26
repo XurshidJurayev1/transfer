@@ -25,7 +25,7 @@ const Navbar = (props) => {
   const { sidebar } = useContext(DarkModeContext);
   const [width, setWidth] = useState(window.innerWidth);
 
-
+    
   useEffect(() => {
     const handleWidth = () => {
       setWidth(window.innerWidth);
