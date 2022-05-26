@@ -1,4 +1,17 @@
-
+@media (max-width: 400px) {
+  .navbar .wrapper .search{
+    display: none !important;
+  }
+  .items.navbar-btn{
+    display: none !important;
+  }
+}
+.navbar__seract-close{
+  display: none !important;
+  @media (max-width: 400px) {
+    display: block !important;
+  }
+}
 .navbar {
   height: 50px;
   border-bottom: 0.5px solid rgb(231, 228, 228);
@@ -10,8 +23,9 @@
   transition: all 0.3s ease-in-out;
   background-color: #fff;
   z-index: 100;
-
-
+  @media(max-width: 400px) {
+    padding: 0 10px;
+  }
   .wrapper {
     width: 100%;
     //padding: 20px;

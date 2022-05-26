@@ -46,14 +46,17 @@ const Navbar = (props) => {
               <MenuIcon sx={{ marginLeft: '10px' }} className="icon" onClick={() => dispatch({ type: 'SIDEBAR' })} />
             </div>
           </div>
-          <div className="search">
+          <div className="item navbar__seract-close">
+            <button className="btn btn-danger" onClick={() => func()}>Logout</button>
+          </div>
+          <div className="search ">
             <input type="text" placeholder="Search..." />
             <SearchOutlinedIcon />
           </div>
           <div className="items navbar-btn">
             <div className="item" onClick={() => setNav(!nav)}>
               <ListOutlinedIcon className="icon" />
-              <div className="counter">2</div>
+             
             </div>
           </div>
         </div>
