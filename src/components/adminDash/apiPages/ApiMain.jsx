@@ -1,6 +1,32 @@
 import React from 'react';
-import { customStyles, columns, data, data2, column2, data3, data4, column3, column4, column5, data5, data6, column6, data7, column7, column8, data8, data9, column9, data10, column10, column11, data11, column12, data12} from "./Data.jsx";
-import { code1, code2, code3, code4, code5, code6, code7, code8, code9, code10, code11, code12 } from "./Code.jsx";
+import {
+  customStyles,
+  columns,
+  data,
+  data2,
+  column2,
+  data3,
+  data4,
+  column3,
+  column4,
+  column5,
+  data5,
+  data6,
+  column6,
+  data7,
+  column7,
+  column8,
+  data8,
+  data9,
+  column9,
+  data10,
+  column10,
+  column11,
+  data11,
+  column12,
+  data12,
+} from './Data.jsx';
+import { code1, code2, code3, code4, code5, code6, code7, code8, code9, code10, code11, code12 } from './Code.jsx';
 import DataTable from 'react-data-table-component';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -9,8 +35,7 @@ import { Helmet } from 'react-helmet';
 
 // A super simple expandable component.
 const ApiMain = () => {
-  return (
-    <div className="api">
+  return (<div className="api">
       <Helmet>
         <meta charSet="utf-8" />
         <meta name="" content="Cabinet api uzspay" />
@@ -160,8 +185,7 @@ const ApiMain = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
 };
 
 export default ApiMain;
