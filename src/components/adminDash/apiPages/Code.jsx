@@ -1,91 +1,63 @@
 const host = window.location.host;
- export const code1 = `
-<?php
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://api.${host}/api/v2/sms',
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_ENCODING => '',
-CURLOPT_MAXREDIRS => 10,
-CURLOPT_TIMEOUT => 0,
-CURLOPT_FOLLOWLOCATION => true,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => 'POST',
-CURLOPT_POSTFIELDS =>'{
-"opid":"60594",
-"smscode":"82943"
-}',
-CURLOPT_HTTPHEADER => array(
-'access_token: 1ecv412we12eWee12eiuyr9874rgGYWQTy3y76e',
-'Content-Type: application/json'
-),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
+export const code1 = `
+curl --location --request POST 'https://h163368.srv16.test-hf.su/deposit/confirm' \\
+--header 'Content-Type: application/x-www-form-urlencoded' \\
+--data-urlencode 'tid=7' \\
+--data-urlencode 'otp=1122'
 `;
- export const code2 = `
+export const code2 = `
 {
-  "error": false,
-  "opid": 32, // ID в нашей системе
-  "status": "success", // Успешно
-  "message": "Платеж прошел успешно"
+    "success": true,
+    "error": false,
+    "data": {
+        "tid": 19,
+        "amount": 10000,
+        "commission": 0
+    }
 }
+
 
 // если ошибка JSON - объект в формате
 {
-  "error": true,   
-  "message": "Ошибка"c
+    "success": false,
+    "error": true,
+    "data": {
+        "tid": 4
+    }
 }
 
+
 `;
-export const code3 = `<?php
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://api.${host}/api/v2/payout',
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_ENCODING => '',
-CURLOPT_MAXREDIRS => 10,
-CURLOPT_TIMEOUT => 0,
-CURLOPT_FOLLOWLOCATION => true,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => 'POST',
-CURLOPT_POSTFIELDS =>'{
-"merchant_id":"9",
-"card_number":"8600444444447744",
-"amount": 100000
-}',
-CURLOPT_HTTPHEADER => array(
-'access_token: 1ecv412we12eWee12eiuyr9874rgGYWQTy3y76e',
-'Content-Type: application/json'
-),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
+export const code3 = `
+curl --location --request POST 'https://h163368.srv16.test-hf.su/withdraw' \\
+--header 'Content-Type: application/x-www-form-urlencoded' \\
+--data-urlencode 'pan=8600312905897001' \\
+--data-urlencode 'token=ed37ed13b9e84baa1c6366dc3f5d84002aaa00e2805fbe88a92d70789597a403' \\
+--data-urlencode 'amount=98500' \\
+--data-urlencode 'uid=1'
 `;
 
 export const code4 = ` 
 {
-  "error": false,
-  "opid": 32, // ID в нашей системе
-  "status": "success", // Успешно
-  "message": "Платеж прошел успешно"
+    "success": true,
+    "error": false,
+    "data": {
+        "tid": 5,
+        "amount": 98500,
+        "commission": 0
+    }
 }
 
 // если ошибка JSON - объект в формате
 {
-  "error": true,   
-  "message": "Ошибка"
+    "success": false,
+    "error": true,
+    "data": {
+        "tid": "14",
+        "message": "An unexpected error occurred"
+    }
 }
+
 `;
 export const code5 = `<?php
 
@@ -266,55 +238,47 @@ export const code10 = ` {
 
 `;
 
-export const code11 = `<?php
-
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-CURLOPT_URL => 'https://api.${host}/api/v2/pay',
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_ENCODING => '',
-CURLOPT_MAXREDIRS => 10,
-CURLOPT_TIMEOUT => 0,
-CURLOPT_FOLLOWLOCATION => true,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => 'POST',
-CURLOPT_POSTFIELDS =>'{
-  "merchant_id":"9",
-  "token":"token",
-  "a":"50000",
-  "s":"8600490470512037",
-  "sh":"2409",
-  "k":"UZS",
-  "order_id":"56447",
-  "client_id": "245457878",
-  “client_ip”: “88.21.33.55”
-}',
-CURLOPT_HTTPHEADER => array(
-  'access_token: 1ecv412we12eWee12eiuyr9874rgGYWQTy3y76e',
-  'Content-Type: application/json'
-),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-echo $response;
+export const code11 = `curl --location --request POST 'https://h163368.srv16.test-hf.su/deposit/create' \\
+--header 'Content-Type: application/x-www-form-urlencoded' \\
+--data-urlencode 'pan=8600312905897001' \\
+--data-urlencode 'exp=2302' \\
+--data-urlencode 'amount=100000' \\
+--data-urlencode 'uid=1'
 
 `;
 
-export const code12 = `   {
-      "error": false,
-      "opid": 32, // ID в нашей системе
-      "status": "success", // Успешно
-      "commission": 10, // Установленная комиссия
-      "name": "Иван Иванов ", // Ф.И.О. владельца карты 
-      "message": "Код успешно отправлен!"
-  }
+export const code12 = `   
+  // success - статус выполнения операции (успех - true);
+  // error - наличие ошибок (false - ошибки отсутствуют);
+  // data - объект данных об операции.
+      // В объекте data могут содержаться следующие данные:
+            // tid - ID транзакции в системе
+            // amount - сумма операции
+            // commission - комисиия пользователя
+            // phone - содержит или не содержит данные о владельце карты-отправителя (в зависимости от наличия этой информации у партнёра-агрегатора)
+{
+    "success": true,
+    "error": false,
+    "data": {
+        "tid": "19",
+        "amount": 10000,
+        "commission": 0,
+        "phone": "*3929"
+    }
+}
+  
   
   // если ошибка JSON - объект в формате
+  // success - статус выполнения операции (неуспех - false);
+  // error - наличие ошибок (true - ошибки присутствуют);
+  // data - объект данных об операции.
+      // В объекте data могут содержаться следующие данные:
+              // message - описание ошибки
   {
-      "error": true,   
-      "message": "Ошибка"
-  }
+    "success": false,
+    "error": true,
+    "data": {
+        "message": "Payment declined"
+    }
+}
 `;

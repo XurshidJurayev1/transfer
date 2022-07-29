@@ -216,14 +216,20 @@ export const data6 = [
   },
   {
     id: 2,
-    name: 'card_number',
-    title: 'Номер карты зачисления',
+    name: 'pan',
+    title: 'номер карты отправителя (пример: 8600000000000000)',
     type: 'string',
   },
   {
     id: 3,
     name: 'amount',
-    title: 'Сумма зачисления',
+    title: 'сумма списания ',
+    type: 'string',
+  },
+  {
+    id: 4,
+    name: 'token ',
+    title: 'захэшированное алгоритмом SHA-512 секретное слово для вывода средств (п1) ',
     type: 'string',
   },
 ];

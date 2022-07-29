@@ -253,6 +253,16 @@ const Datatable = (props) => {
         <Typography component="h1" mb={3} variant="h5"> Выберите метод фильтрации </Typography>
         <Box className="form_input_flex">
           <Box className="form_input_fields">
+            <TextField
+              type="number"
+              fullWidth
+              value={cardId}
+              onChange={(e) => setCardId(e.target.value)}
+              id="outlined-basic"
+              label="Id транзакции"
+              variant="outlined" />
+          </Box>
+          <Box className="form_input_fields">
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={3}>
                 <DateTimePicker
@@ -283,16 +293,7 @@ const Datatable = (props) => {
               </Stack>
             </LocalizationProvider>
           </Box>
-          <Box className="form_input_fields">
-            <TextField
-              type="number"
-              fullWidth
-              value={cardId}
-              onChange={(e) => setCardId(e.target.value)}
-              id="outlined-basic"
-              label="Id транзакции"
-              variant="outlined" />
-          </Box>
+
           <Box className="form_input_fields">
             <TextField
               type="number"
