@@ -305,27 +305,27 @@ const Datatable = (props) => {
               variant="outlined" />
           </Box>
 
-          <Box className="form_input_fields">
-            <FormControl fullWidth>
-              <InputLabel
-                id="demo-simple-select-label"
-              >
-                Выберите аккаунт
-              </InputLabel>
-              <Select
-                disabled={true}
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={accaunt}
-                label="Выберите аккаунт"
-                onChange={(e) => setAccount(e.target.value)}
-              >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+          {/*<Box className="form_input_fields">*/}
+          {/*  <FormControl fullWidth>*/}
+          {/*    <InputLabel*/}
+          {/*      id="demo-simple-select-label"*/}
+          {/*    >*/}
+          {/*      Выберите аккаунт*/}
+          {/*    </InputLabel>*/}
+          {/*    <Select*/}
+          {/*      disabled={true}*/}
+          {/*      labelId="demo-simple-select-label"*/}
+          {/*      id="demo-simple-select"*/}
+          {/*      value={accaunt}*/}
+          {/*      label="Выберите аккаунт"*/}
+          {/*      onChange={(e) => setAccount(e.target.value)}*/}
+          {/*    >*/}
+          {/*      <MenuItem value={10}>Ten</MenuItem>*/}
+          {/*      <MenuItem value={20}>Twenty</MenuItem>*/}
+          {/*      <MenuItem value={30}>Thirty</MenuItem>*/}
+          {/*    </Select>*/}
+          {/*  </FormControl>*/}
+          {/*</Box>*/}
           <Box className="form_input_fields">
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Тип оплаты</InputLabel>
