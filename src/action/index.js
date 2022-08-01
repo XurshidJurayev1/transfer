@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { apiLink } from '../Api/ApiLink';
-
+import { Api } from '../Api/NewApiUrl';
 
 export const listTransfer = () => async (dispatch) => {
   const res = await api.get('/all');
@@ -58,12 +58,57 @@ function testLogin(res) {
   };
 }
 
+function infoUser(res) {
+  return {
+    type: 'USER_INFO', payload: res,
+  };
+}
+
 export const fetchLogin = ({ email, password }) => {
   return (dispatch) => {
     dispatch(loginRequest);
     axios.post(`${apiLink}login`, { email, password })
       .then(res => {
         dispatch(testLogin(res.data));
+      }, error => {
+        dispatch(loginError(error.response.data && error.response.data));
+      });
+  };
+};
+
+export const userLogin = ({ login, password }) => {
+  return (dispatch) => {
+    dispatch(loginRequest);
+    axios.post(`${Api}login`, { login, password })
+      .then(res => {
+        dispatch(testLogin(res.data));
+      }, error => {
+        dispatch(loginError(error.response.data && error.response.data));
+      });
+  };
+};
+
+export const getUserInfo = ({ token }) => async (dispatch) => {
+  const res = await api.get('user', {
+    headers: {
+      'X-API-KEY': token,
+    },
+  });
+  dispatch({
+    type: 'USER_INFO', payload: res.data,
+  });
+};
+
+export const userInfo = ({ login, password, token }) => {
+  return (dispatch) => {
+    dispatch(loginRequest);
+    axios.get(`${Api}user`, {
+      headers: {
+        Authorization: 'Bearer' + ' ' + token,
+      },
+    }, { login, password })
+      .then(res => {
+        dispatch(infoUser(res.data));
       }, error => {
         dispatch(loginError(error.response.data && error.response.data));
       });

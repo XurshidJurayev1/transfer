@@ -20,12 +20,13 @@ const Navbar = (props) => {
   const func = () => {
     navigate('/');
     props.logout();
+    localStorage.setItem('token', '');
   };
 
   const { sidebar } = useContext(DarkModeContext);
   const [width, setWidth] = useState(window.innerWidth);
 
-    
+
   useEffect(() => {
     const handleWidth = () => {
       setWidth(window.innerWidth);
@@ -56,7 +57,7 @@ const Navbar = (props) => {
           <div className="items navbar-btn">
             <div className="item" onClick={() => setNav(!nav)}>
               <ListOutlinedIcon className="icon" />
-             
+
             </div>
           </div>
         </div>

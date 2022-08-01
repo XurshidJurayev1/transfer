@@ -17,13 +17,10 @@ const Index = (props) => {
 
 
   const func = () => {
-    if (props.role.length > 0) {
-      switch (props.role) {
-        case 'admin'  :
-          return setAdmin(true);
-        default :
-          return null;
-      }
+
+    if (localStorage.getItem('token')) {
+      return setAdmin(true);
+
     }
   };
 
@@ -36,7 +33,6 @@ const Index = (props) => {
   if (props.error) {
     toast.error(props.error.message);
   }
-
 
 
   return (<Routes>

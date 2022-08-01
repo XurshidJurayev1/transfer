@@ -244,7 +244,7 @@ const Datatable = (props) => {
   // }
   //
   // console.log(filterTimes(list, date1, date2));
-
+  console.log(Date.parse(date1));
 
   return (<div className="datatable">
     <div className="datatableTitle">

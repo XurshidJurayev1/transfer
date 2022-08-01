@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Logon.scss';
 import { connect } from 'react-redux';
-import { fetchLogin, login } from '../action';
+import { fetchLogin, getUserInfo, login, userInfo, userLogin } from '../action';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,26 +12,31 @@ const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  const token = props.token;
 
   useEffect(() => {
 
 
-    if (props.role.length > 0) {
-      switch (props.role) {
-        case 'admin' :
-          return navigate('/admin/info');
-        default :
-          return null;
-      }
+    if (localStorage.getItem('token')) {
+      navigate('/admin/info');
+
     }
 
-  }, [props.role]);
+  }, [props.token]);
+
 
   const submit = (e) => {
     e.preventDefault();
-    props.fetchLogin({ email, password });
+    // props.fetchLogin({ email, password });
+    props.userLogin({ login: email, password });
+    // props.userInfo({ login: email, password, token });
+
   };
+
+  if (token) {
+    localStorage.setItem('token', JSON.stringify(token));
+    props.getUserInfo({ token });
+  }
 
 
   return (<div className="login">
@@ -53,7 +58,7 @@ const Login = (props) => {
                   <i className="fa-solid fa-at"></i>
                   <input
                     placeholder="Enter Email Address..."
-                    type="email"
+                    type="text"
                     className="login__input form-control form-control-user"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -89,4 +94,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { login, fetchLogin })(Login);
+export default connect(mapStateToProps, { login, fetchLogin, userLogin, userInfo, getUserInfo })(Login);
