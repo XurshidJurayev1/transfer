@@ -29,7 +29,7 @@ const Datatable = (props) => {
   const [summa, setSumma] = useState(0);
   const token = props.token;
 
-  let list = props.list.data.transactions;
+  let list = props.list;
 
   // const dateFilter = () => {
   //   const data = [{ id: 1, receive_date: '07.03.2022 05:13:03', remarks: '11' }, {
@@ -404,7 +404,7 @@ const Datatable = (props) => {
     <DataGrid
       className="datagrid"
       // getRowId={(row) => row.id}
-      rows={filtrFunc ? filtred : list}
+      rows={list.data ? list.data.transactions : []}
       loading={props.list.length === 0}
       columns={userColumns.concat(actionColumn)}
       pageSize={10}

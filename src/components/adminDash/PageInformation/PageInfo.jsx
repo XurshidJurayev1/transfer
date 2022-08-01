@@ -7,7 +7,7 @@ import { columns, customStyles, data } from './Data';
 import { getUserInfo } from '../../../action';
 
 const PageInfo = (props) => {
-
+  const token = localStorage.getItem('token');
 
   const user = props.user || localStorage.getItem('userInfo');
 
@@ -29,7 +29,7 @@ const PageInfo = (props) => {
     return number;
   };
   useEffect(() => {
-
+    props.getUserInfo({ token });
   }, []);
 
   if (props.user) {
