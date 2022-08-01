@@ -4,7 +4,7 @@ import { userColumns, userRows } from './datatablesource';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { listTransfer } from '../../../../../action';
+import { listTransactions, listTransfer } from '../../../../../action';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
@@ -27,8 +27,9 @@ const Datatable = (props) => {
   const [date2, setDate2] = useState(new Date('mm/dd/yyyy'));
   const [summaStatus, setSummaStatus] = useState(false);
   const [summa, setSumma] = useState(0);
+  const token = props.token;
 
-  let list = props.list;
+  let list = props.list.data.transactions;
 
   // const dateFilter = () => {
   //   const data = [{ id: 1, receive_date: '07.03.2022 05:13:03', remarks: '11' }, {
@@ -62,60 +63,84 @@ const Datatable = (props) => {
   //
   // console.log(dateFilter());
 
-  const filtr = (e) => {
-    const getDate1 = new Date(date1);
-    const getDate2 = new Date(date2);
 
-    if (isNaN(getDate1) && isNaN(getDate2)) {
-      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
-        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
-        .filter(i => status === '' ? i : i.status === status)
-        .filter(i => pay === '' ? i : i.turi === pay);
-      // .filter(i => new Date(i.create_time) < getDate2)
-      // .filter(i => new Date(i.create_time) > getDate1);
+  const filtr = () => {
+    // const getDate1 = new Date(date1);
+    // const getDate2 = new Date(date2);
+    //
+    // if (isNaN(getDate1) && isNaN(getDate2)) {
+    //   const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+    //     .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+    //     .filter(i => status === '' ? i : i.status === status)
+    //     .filter(i => pay === '' ? i : i.turi === pay);
+    //   // .filter(i => new Date(i.create_time) < getDate2)
+    //   // .filter(i => new Date(i.create_time) > getDate1);
+    //
+    //   setFiltred(result);
+    //   setFiltrFunc(true);
+    // }
+    //
+    // if (!isNaN(getDate2) && isNaN(getDate1)) {
+    //
+    //   const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+    //     .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+    //     .filter(i => status === '' ? i : i.status === status)
+    //     .filter(i => pay === '' ? i : i.turi === pay)
+    //     .filter(i => new Date(i.create_time) < getDate2);
+    //
+    //
+    //   setFiltred(result);
+    //   setFiltrFunc(true);
+    // }
+    // if (isNaN(getDate2) && !isNaN(getDate1)) {
+    //
+    //   const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+    //     .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+    //     .filter(i => status === '' ? i : i.status === status)
+    //     .filter(i => pay === '' ? i : i.turi === pay)
+    //     .filter(i => new Date(i.create_time) > getDate1);
+    //
+    //
+    //   setFiltred(result);
+    //   setFiltrFunc(true);
+    // }
+    // if (!isNaN(getDate1) && !isNaN(getDate2)) {
+    //   const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
+    //     .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
+    //     .filter(i => status === '' ? i : i.status === status)
+    //     .filter(i => pay === '' ? i : i.turi === pay)
+    //     .filter(i => new Date(i.create_time) < getDate2)
+    //     .filter(i => new Date(i.create_time) > getDate1);
+    //
+    //   setFiltred(result);
+    //   setFiltrFunc(true);
+    // }
 
-      setFiltred(result);
-      setFiltrFunc(true);
-    }
+    const formData = new FormData();
+    const dateTime1 = new Date(date1).getTime();
+    const timestamp1 = Math.floor(dateTime1 / 1000);
+    const dateTime2 = new Date(date2).getTime();
+    const timestamp2 = Math.floor(dateTime2 / 1000);
 
-    if (!isNaN(getDate2) && isNaN(getDate1)) {
-
-      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
-        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
-        .filter(i => status === '' ? i : i.status === status)
-        .filter(i => pay === '' ? i : i.turi === pay)
-        .filter(i => new Date(i.create_time) < getDate2);
-
-
-      setFiltred(result);
-      setFiltrFunc(true);
-    }
-    if (isNaN(getDate2) && !isNaN(getDate1)) {
-
-      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
-        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
-        .filter(i => status === '' ? i : i.status === status)
-        .filter(i => pay === '' ? i : i.turi === pay)
-        .filter(i => new Date(i.create_time) > getDate1);
+    console.log(cardId);
+    cardId && formData.append('tid', cardId);
+    card && formData.append('pan', card);
+    timestamp1 && formData.append('dateFrom', timestamp1);
+    timestamp2 && formData.append('dateTo', timestamp2);
+    status && formData.append('status', status);
+    pay && formData.append('type', pay);
 
 
-      setFiltred(result);
-      setFiltrFunc(true);
-    }
-    if (!isNaN(getDate1) && !isNaN(getDate2)) {
-      const result = list.filter(item => cardId === '' ? item : item.id.toString().includes(cardId.toString()))
-        .filter(i => card === '' ? i : i.card.toString().includes(card.toString()))
-        .filter(i => status === '' ? i : i.status === status)
-        .filter(i => pay === '' ? i : i.turi === pay)
-        .filter(i => new Date(i.create_time) < getDate2)
-        .filter(i => new Date(i.create_time) > getDate1);
-
-      setFiltred(result);
-      setFiltrFunc(true);
-    }
+    props.listTransactions(formData, token);
 
 
   };
+  //
+  // const dateTime = new Date(date1).getTime();
+  // const timestamp = Math.floor(dateTime / 1000);
+  //
+  // console.log(dateTime);
+  // console.log(timestamp);
 
   console.log(props);
 
@@ -133,7 +158,7 @@ const Datatable = (props) => {
 
 
   const render = () => {
-    props.listTransfer();
+    // props.listTransfer();
     setFiltred(props.list);
   };
 
@@ -163,7 +188,7 @@ const Datatable = (props) => {
       </div>);
     },
   }];
-
+  console.log();
 
   const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 
@@ -205,14 +230,6 @@ const Datatable = (props) => {
     }
   };
 
-  function convertDate(inputFormat) {
-    function pad(s) {
-      return (s < 10) ? '0' + s : s;
-    }
-
-    var d = new Date(inputFormat);
-    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
-  }
 
   Number.prototype.toDivide = function () {
     var int = String(this);
@@ -244,7 +261,6 @@ const Datatable = (props) => {
   // }
   //
   // console.log(filterTimes(list, date1, date2));
-  console.log(Date.parse(date1));
 
   return (<div className="datatable">
     <div className="datatableTitle">
@@ -266,7 +282,7 @@ const Datatable = (props) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={3}>
                 <DateTimePicker
-
+                  mask="__/__/____ __:__ _m"
                   renderInput={(props) => <TextField {...props} />}
                   label="Выборка дат с"
                   value={date1}
@@ -282,6 +298,7 @@ const Datatable = (props) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={3}>
                 <DateTimePicker
+                  mask="__/__/____ __:__ _m"
                   renderInput={(props) => <TextField {...props} />}
                   label="Выборка дат до"
                   value={date2}
@@ -339,7 +356,7 @@ const Datatable = (props) => {
               >
                 <MenuItem value={''} defaultValue={true}>Все</MenuItem>
                 <MenuItem value={'1'}>Ввод</MenuItem>
-                <MenuItem value={'2'}>Вывод</MenuItem>
+                <MenuItem value={'-1'}>Вывод</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -354,9 +371,9 @@ const Datatable = (props) => {
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <MenuItem value={''}>Все</MenuItem>
-                <MenuItem value={'1'}>В Обработке</MenuItem>
-                <MenuItem value={'2'}>Успешно</MenuItem>
-                <MenuItem value={'3'}>Не Успешно</MenuItem>
+                <MenuItem value={'0'}>В Обработке</MenuItem>
+                <MenuItem value={'1'}>Успешно</MenuItem>
+                <MenuItem value={'-1'}>Не Успешно</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -402,7 +419,8 @@ const Datatable = (props) => {
 const mapStateToProps = (state) => {
   return {
     list: state.listTransfer,
+    token: state.token,
   };
 };
 
-export default connect(mapStateToProps, { listTransfer })(Datatable);
+export default connect(mapStateToProps, { listTransfer, listTransactions })(Datatable);
