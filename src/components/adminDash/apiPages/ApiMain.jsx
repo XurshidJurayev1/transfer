@@ -60,7 +60,7 @@ const ApiMain = () => {
             <DataTable customStyles={customStyles} columns={column2} data={data2} />
           </div>
           <div className="api__test">
-            <h4>Пример кода PHP</h4>
+            <h4>Пример запроса</h4>
             <SyntaxHighlighter language="javascript" style={materialOceanic}>
               {code11}
             </SyntaxHighlighter>
@@ -83,7 +83,7 @@ const ApiMain = () => {
             <DataTable customStyles={customStyles} columns={column4} data={data4} />
           </div>
           <div className="api__test">
-            <h4>Пример кода PHP</h4>
+            <h4>Пример запроса</h4>
             <SyntaxHighlighter language="javascript" style={materialOceanic}>
               {code1}
             </SyntaxHighlighter>
@@ -105,7 +105,7 @@ const ApiMain = () => {
             <DataTable customStyles={customStyles} columns={column6} data={data6} />
           </div>
           <div className="api__test">
-            <h4>Пример кода PHP</h4>
+            <h4>Пример запроса</h4>
             <SyntaxHighlighter language="javascript" style={materialOceanic}>
               {code3}
             </SyntaxHighlighter>
@@ -127,7 +127,7 @@ const ApiMain = () => {
             <DataTable customStyles={customStyles} columns={column8} data={data8} />
           </div>
           <div className="api__test">
-            <h4>Пример кода PHP</h4>
+            <h4>Пример запроса</h4>
             <SyntaxHighlighter language="javascript" style={materialOceanic}>
               {code5}
             </SyntaxHighlighter>
@@ -149,7 +149,7 @@ const ApiMain = () => {
             <DataTable customStyles={customStyles} columns={column10} data={data10} />
           </div>
           <div className="api__test">
-            <h4>Пример кода PHP</h4>
+            <h4>Пример запроса</h4>
             <SyntaxHighlighter language="javascript" style={materialOceanic}>
               {code7}
             </SyntaxHighlighter>
@@ -171,7 +171,7 @@ const ApiMain = () => {
             <DataTable customStyles={customStyles} columns={column12} data={data12} />
           </div>
           <div className="api__test">
-            <h4>Пример кода PHP</h4>
+            <h4>Пример запроса</h4>
             <SyntaxHighlighter language="javascript" style={materialOceanic}>
               {code9}
             </SyntaxHighlighter>
