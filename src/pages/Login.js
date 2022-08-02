@@ -17,10 +17,11 @@ const Login = (props) => {
   useEffect(() => {
 
 
-    if (localStorage.getItem('token')) {
+    if (props.token.length > 0) {
       navigate('/admin/info');
 
     }
+    console.log('asdas');
 
   }, [props.token]);
 

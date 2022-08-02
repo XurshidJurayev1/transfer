@@ -18,7 +18,7 @@ const Index = (props) => {
 
   const func = () => {
 
-    if (localStorage.getItem('token')) {
+    if (props.token) {
       return setAdmin(true);
 
     }
@@ -28,7 +28,7 @@ const Index = (props) => {
     func();
 
 
-  }, [props.role]);
+  }, [props.token]);
 
   if (props.error) {
     toast.error(props.error.message);

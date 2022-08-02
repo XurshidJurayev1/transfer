@@ -208,7 +208,7 @@ const Datatable = (props) => {
 
   };
 
-  const fileData = filtrFunc ? filtred : list;
+  const fileData = list.data && list.data.transactions;
 
 
   const fileName = 'MySheets';

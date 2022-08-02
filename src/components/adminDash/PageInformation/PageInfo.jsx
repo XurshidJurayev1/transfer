@@ -30,7 +30,8 @@ const PageInfo = (props) => {
   };
   useEffect(() => {
     props.getUserInfo({ token });
-  }, []);
+    console.log('12312');
+  }, [props.token]);
 
   if (props.user) {
     localStorage.setItem('userInfo', JSON.stringify(props.user));
