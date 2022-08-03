@@ -262,6 +262,7 @@ const Datatable = (props) => {
   //
   // console.log(filterTimes(list, date1, date2));
 
+
   return (<div className="datatable">
     <div className="datatableTitle">
       <Box
@@ -393,10 +394,10 @@ const Datatable = (props) => {
                   onClick={() => exportToCSV(fileData, fileName)}>
             Export
           </button>
-          <button type="button" className="btn btn-info primary_btn" style={{ marginRight: '20px' }} onClick={allSumma}>
-            Сумма
-          </button>
-          {summaStatus && <p> Общая сумма: {summa.toDivide()} </p>}
+          {/*<button type="button" className="btn btn-info primary_btn" style={{ marginRight: '20px' }} onClick={allSumma}>*/}
+          {/*  Сумма*/}
+          {/*</button>*/}
+          <p> Общая сумма: {list.data && list.data.amount_sum} </p>
         </Box>
 
       </Box>
