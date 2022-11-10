@@ -27,6 +27,7 @@ const Datatable = (props) => {
   const [date2, setDate2] = useState(new Date('mm/dd/yyyy'));
   const [summaStatus, setSummaStatus] = useState(false);
   const [summa, setSumma] = useState(0);
+  const [page, setPage] = useState(0);
   const token = props.token;
 
   let list = props.list;
@@ -129,6 +130,7 @@ const Datatable = (props) => {
     timestamp2 && formData.append('dateTo', timestamp2);
     status && formData.append('status', status);
     pay && formData.append('type', pay);
+    page && formData.append('page', page);
 
 
     props.listTransactions(formData, token);
@@ -162,6 +164,11 @@ const Datatable = (props) => {
     setFiltred(props.list);
   };
 
+  useEffect(() => {
+    render();
+    setFiltred(props.list);
+
+  }, [page]);
 
   useEffect(() => {
     render();
@@ -403,6 +410,8 @@ const Datatable = (props) => {
       </Box>
     </div>
     <DataGrid
+      page={page}
+      onPageChange={(newPage) => setPage(newPage)}
       className="datagrid"
       // getRowId={(row) => row.id}
       rows={list.data ? list.data.transactions : []}
