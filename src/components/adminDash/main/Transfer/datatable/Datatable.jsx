@@ -165,7 +165,8 @@ const Datatable = (props) => {
   };
 
   useEffect(() => {
-    render();
+    filtr();
+    // render();
     setFiltred(props.list);
 
   }, [page]);
