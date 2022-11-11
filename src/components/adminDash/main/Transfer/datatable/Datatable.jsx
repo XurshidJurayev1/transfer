@@ -419,7 +419,7 @@ const Datatable = (props) => {
       loading={props.list.length === 0}
       columns={userColumns.concat(actionColumn)}
       pageSize={10}
-      rowsPerPageOptions={[10]}
+      rowsPerPageOptions={[list.data ? list.data.count : 0]}
       // checkboxSelection
       components={{ Toolbar: GridToolbar }}
       getGridDateOperators={true}
